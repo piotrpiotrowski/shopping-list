@@ -1,15 +1,107 @@
-Chleb;pieczywo
-Chleb ciemny;pieczywo
-Chleb jasny;pieczywo
-Chleb tesin;pieczywo
-Bułki;pieczywo
-Bułki jesne;pieczywo
-Bułki z makiem;pieczywo
-Bułki ciemna;pieczywo
-Woda;napoje
-Fleichkäse;mieso
-Mieso mielone;mieso
-Mieso wołowe z kościa;mieso
-Marchewka;warzywa
-Por;warzywa
-Seler;warzywa
+1,Proszek do prania,chemia
+2,Plyn do mycia naczyń,chemia
+3,Kostki do zmywarki,chemia
+4,Späzli,dania
+5,Lazania,dania
+6,Papier toaletowy,higieniczne
+7,Reczniki papierowe,higieniczne
+8,Waciki do pupy,higieniczne
+9,Papier nawilżony,higieniczne
+10,Fleichkäse,mięso
+11,Mieso mielone,mięso
+12,Mieso wołowe z kościa,mięso
+13,Mieso na pieczeń,mięso
+14,Boczek,mięso
+15,Szynka,mięso
+16,Schab,mięso
+17,Poledwica,mięso
+19,Biała kiełbasa,mięso
+20,Różowa kielbasa,mięso
+21,Kurczak,mięso
+22,Kurczak pieczony,mięso
+32,Masło,nabiał
+33,Mleko,nabiał
+34,Mleczko bebe,nabiał
+35,Jajka,nabiał
+36,Ser mozarella,nabiał
+37,Ser raklet,nabiał
+38,Grujer,nabiał
+39,Śmietana,nabiał
+40,Sok pomarańczowy,napoje
+41,Syrop do rozcięczenia,napoje
+42,Most,napoje
+43,Sok jabłkowy,napoje
+44,Woda,napoje
+45,Schorle,napoje
+46,Herbata czarna,napoje
+47,Herbata owocowa,napoje
+48,Herbata zielona,napoje
+49,Orzechy włoskie,orzechy
+50,Pistacje,orzechy
+18,Papryka,owoce
+23,Jabłka,owoce
+24,Mandarynki,owoce
+25,Winogrona,owoce
+26,Śliwki,owoce
+27,Mus owocowy,owoce
+28,Truskawki,owoce
+29,Maliny,owoce
+30,Jeżyny,owoce
+31,Borówki,owoce
+51,Banany,owoce
+52,Aktimelki,owoce
+53,Gruszki,owoce
+54,Brzoskwinie,owoce
+55,Nektarynki,owoce
+56,Nektarynki białe,owoce
+57,Cytryna,owoce
+58,Chleb,pieczywo
+59,Chleb ciemny,pieczywo
+60,Chleb jasny,pieczywo
+61,Chleb tesin,pieczywo
+62,Bułki,pieczywo
+63,Bułki jesne,pieczywo
+64,Bułki z makiem,pieczywo
+65,Gipfel,pieczywo
+66,Bułki ciemna,pieczywo
+67,Majonez,przyprawy
+68,Sól,przyprawy
+69,Pieprz,przyprawy
+70,Keczup,przyprawy
+71,Drożdże,różne
+72,Olej,różne
+73,Oliwa,różne
+74,Zurisachs,różne
+75,Worki na kompost,różne
+76,Czekolada,słodycze
+77,Lody,słodycze
+78,Czekolada gorzka,słodycze
+79,Dżem,słodycze
+80,Kaszka niemowleca,sypkie
+81,Cukier,sypkie
+82,Mąka,sypkie
+83,Roll gerste,sypkie
+84,Makaron spagetti,sypkie
+85,Makaron do rosołu,sypkie
+86,Makaron świderki,sypkie
+87,Makaron na lazanie,sypkie
+88,Kasza gryczana,sypkie
+89,Płatki owsiane,sypkie
+90,Marchewka,warzywa
+91,Por,warzywa
+92,Seler,warzywa
+93,Cebula,warzywa
+94,Buraki,warzywa
+95,Brokuły,warzywa
+96,Cukinia,warzywa
+97,Sałata,warzywa
+98,Pomidor,warzywa
+99,Ogórek,warzywa
+100,Rzodkiewka,warzywa
+101,Ziemniaki,warzywa
+102,Fasola szparagowa,warzywa
+103,Fasola do gotowania,warzywa
+104,Ciecieżyca,warzywa
+105,Czosnek,warzywa
+106,Imbir,warzywa
+107,Pomidory koktajlowe,warzywa

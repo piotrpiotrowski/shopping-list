@@ -1,1 +1,5 @@
-<button mat-raised-button (click)="addToList()" class="item-button {{item.category}} {{state}}">{{item.name}}</button>
+<button mat-raised-button (click)="addToList()" class="item-button {{item.category}} {{state}}">
+  {{item.name}}
+  <mat-icon *ngIf="isStateSelected()" aria-hidden="true">done</mat-icon>
+  <span *ngIf="isStateMultiSelected()">{{quantity}}x</span>
+</button>

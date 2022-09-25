@@ -1,0 +1,5 @@
+export enum ItemButtonState {
+  NOT_SELECTED = 'NOT_SELECTED',
+  SELECTED = 'SELECTED',
+  MULTI_SELECTED = 'MULTI_SELECTED'
+}

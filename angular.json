@@ -23,11 +23,10 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "deployUrl": "shopping-list/",
+            "baseHref": "/shopping-list/",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "src/db.csv"
+              "src/assets"
             ],
             "styles": [
               "src/styles.scss"
@@ -70,6 +69,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
+            "servePath": "shopping-list/",
             "proxyConfig": "proxy.conf.json"
           },
           "configurations": {

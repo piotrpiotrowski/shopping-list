@@ -1,0 +1,11 @@
+<mat-accordion>
+  <mat-expansion-panel hideToggle *ngFor="let itemsGroup of itemsGroups" #panel>
+    <mat-expansion-panel-header [ngClass]="panel.expanded ? '' : itemsGroup.name">
+      <mat-panel-title class="{{panel.expanded ? 'title-expanded' : 'title-collapsed'}}">{{itemsGroup.name.toUpperCase()}}</mat-panel-title>
+      <mat-panel-description></mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="list">
+      <app-item-button *ngFor="let item of itemsGroup.items" [item]="item" (selected)="onSelection($event)"></app-item-button>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

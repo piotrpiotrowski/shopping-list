@@ -1,7 +1,7 @@
 {
   "request": {
     "method": "GET",
-    "url": "/shopping-list/db.csv"
+    "url": "/api/db.csv"
   },
   "response": {
     "status": 200,
