@@ -83,7 +83,7 @@ export class ListService {
   }
 
   private extractQuantity(line: string) {
-    let value = line.replace(/[a-zA-z ]/g, '');
+    let value = line.replace(/[a-zA-z ąęłóżźńĄĘŁÓŻŹŃ]/g, '');
     return value.length > 0 ? Number(value) : 1;
   }
 }
