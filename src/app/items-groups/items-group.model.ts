@@ -7,4 +7,6 @@ export class ItemsGroup {
   filterSelected() {
     return this.items.filter(item => item.quantity > 0);
   }
+
+  findItem = (line: string) => this.items.find(item => item.name === line)
 }

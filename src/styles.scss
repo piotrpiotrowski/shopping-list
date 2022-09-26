@@ -18,59 +18,62 @@ $theme: mat.define-light-theme((
 }
 
 .pieczywo {
-  background-color: #988827 !important;
+  background-color: rgba(152, 136, 39, 0.7) !important;
 }
 
 .napoje {
-  background-color: aqua !important;
+  background-color: rgba(0, 255, 255, 0.7) !important;
 }
 
 .mięso {
-  background-color: #c70d38 !important;
+  background-color: rgba(199, 13, 56, 0.7) !important;
 }
 
 .warzywa {
-  background-color: #42ad24 !important;
+  background-color: rgba(66, 173, 36, 0.7) !important;
 }
 
 .chemia {
-  background-color: #30342f !important;
+  background-color: rgba(48, 52, 47, 0.7) !important;
 }
 
 .dania {
-  background-color: #0b28e0 !important;
+  background-color: rgba(11, 40, 224, 0.7) !important;
 }
 
 .higieniczne {
-  background-color: #b8e0f6 !important;
+  background-color: rgba(184, 224, 246, 0.7) !important;
 }
 
 .nabiał {
-  background-color: #f3ef96 !important;
+  background-color: rgba(243, 239, 150, 0.7) !important;
 }
 
 .orzechy {
-  background-color: #efdf08 !important;
+  background-color: rgba(239, 223, 8, 0.7) !important;
 }
 
 .owoce {
-  background-color: #f68f0a !important;
+  background-color: rgba(246, 143, 10, 0.7) !important;
 
 }
 
 .przyprawy {
-  background-color: #c0f3af !important;
+  background-color: rgba(192, 243, 175, 0.7) !important;
 }
 
 .różne {
-  background-color: #8f8888 !important;
+  background-color: rgba(143, 136, 136, 0.7) !important;
 }
 
 .słodycze {
-  background-color: #e80fbc !important;
-
+  background-color: rgba(232, 15, 188, 0.7) !important;
 }
 
 .sypkie {
-  background-color: #51f6db !important;
+  background-color: rgba(81, 246, 219, 0.7) !important;
+}
+
+.nieznane {
+  background-color: rgba(246, 74, 4, 0.7) !important;
 }

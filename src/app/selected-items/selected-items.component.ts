@@ -26,10 +26,9 @@ export class SelectedItemsComponent implements OnInit {
     this.moveCheckedDown();
   }
 
-  parseInputText($event: Event) {
-    this.lines = this.text.trim()
-      .split('\n')
-      .map(line => this.createLine(line));
+  parseText() {
+    this.listService.selectFromText(this.text);
+    this.buildLinesFromState();
   }
 
   private buildLinesFromState = () => {
@@ -45,5 +44,4 @@ export class SelectedItemsComponent implements OnInit {
   private moveCheckedDown() {
     this.lines.sort((a, b) => a.getWeight() - b.getWeight());
   }
-
 }

@@ -1,5 +1,5 @@
 <mat-form-field *ngIf="listService.getSelectedItems().length == 0 && text.length == 0" appearance="fill" class="landing-input">
-<textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="5" cdkAutosizeMaxRows="5" [(ngModel)]="text" (ngModelChange)="parseInputText($event)">
+<textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="5" cdkAutosizeMaxRows="5" [(ngModel)]="text" (ngModelChange)="parseText()">
 </textarea>
 </mat-form-field>
 <mat-selection-list [multiple]="false">

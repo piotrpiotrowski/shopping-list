@@ -13,6 +13,8 @@ export class ListService {
 
   private itemsGroups: ItemsGroup[] = [];
 
+  private readonly UNKNOWN = 'nieznane';
+
   constructor(private clipboard: Clipboard, private http: HttpClient) {
   }
 
@@ -45,6 +47,28 @@ export class ListService {
       .pipe(tap(itemsGroups => this.itemsGroups = itemsGroups))
   }
 
+  selectFromText(text: string) {
+    const unknownItems: Item[] = [];
+    text.trim()
+      .split('\n')
+      .filter(value => value.length > 0)
+      .forEach(line => {
+        const quantity = this.extractQuantity(line);
+        const name = line.replace(` ${quantity}x`, '')
+        const item = this.itemsGroups
+          .map(value => value.findItem(name))
+          .find(value => value);
+        if (item) {
+          item.setQuantity(quantity);
+        } else {
+          unknownItems.push(new Item(0, name, this.UNKNOWN, quantity));
+        }
+      });
+    if (unknownItems.length > 0) {
+      this.itemsGroups.push(new ItemsGroup(this.UNKNOWN, unknownItems))
+    }
+  }
+
   private convertToItem(value: string) {
     const columns = value.split(',');
     return new Item(Number(columns[0]), columns[1], columns[2].trimEnd());
@@ -56,5 +80,10 @@ export class ListService {
 
   private sortByCategory(itemsGroups: ItemsGroup[]) {
     return itemsGroups.sort((a, b) => a.name.localeCompare(b.name));
+  }
+
+  private extractQuantity(line: string) {
+    let value = line.replace(/[a-zA-z ]/g, '');
+    return value.length > 0 ? Number(value) : 1;
   }
 }

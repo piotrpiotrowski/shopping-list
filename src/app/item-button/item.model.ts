@@ -11,4 +11,8 @@ export class Item {
   }
 
   asString = () => this.quantity == 1 ? this.name : `${this.name} ${this.quantity}x`
+
+  setQuantity(quantity: number) {
+    this.quantity = quantity;
+  }
 }

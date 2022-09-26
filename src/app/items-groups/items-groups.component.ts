@@ -22,7 +22,7 @@ export class ItemsGroupsComponent implements OnInit {
     this.itemsGroupsSource.subscribe({
       next: itemsGroups => this.itemsGroups = itemsGroups,
       error: console.error
-    })
+    });
   }
 
   onSelection(itemEvent: ItemEvent) {
