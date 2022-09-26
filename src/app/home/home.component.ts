@@ -7,18 +7,10 @@ import {ListService} from "../list/list.service";
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
   itemsGroups: ItemsGroup[] = [];
 
   constructor(public listService: ListService) {
-  }
-
-  ngOnInit(): void {
-    this.listService.loadItems()
-      .subscribe({
-        next: value => this.itemsGroups = value,
-        error: console.error
-      });
   }
 }

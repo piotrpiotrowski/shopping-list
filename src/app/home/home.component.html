@@ -1,1 +1,1 @@
-<app-items-groups [itemsGroups]="itemsGroups" (selected)="listService.append($event)"></app-items-groups>
+<app-items-groups [itemsGroupsSource]="listService.loadItemsGroups()" (selected)="listService.append($event)"></app-items-groups>

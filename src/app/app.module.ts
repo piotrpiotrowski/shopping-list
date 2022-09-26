@@ -16,6 +16,10 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MenuComponent} from "./menu/menu.component";
 import {MatListModule} from "@angular/material/list";
 import {HomeComponent} from "./home/home.component";
+import { SelectedItemsComponent } from './selected-items/selected-items.component';
+import {MatInputModule} from "@angular/material/input";
+import {FormsModule} from "@angular/forms";
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 @NgModule({
   declarations: [
@@ -23,7 +27,8 @@ import {HomeComponent} from "./home/home.component";
     ItemButtonComponent,
     ItemsGroupsComponent,
     MenuComponent,
-    HomeComponent
+    HomeComponent,
+    SelectedItemsComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +41,10 @@ import {HomeComponent} from "./home/home.component";
     MatExpansionModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatListModule
+    MatListModule,
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

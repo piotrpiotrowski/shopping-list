@@ -13,17 +13,17 @@ describe('MenuComponent', () => {
       imports: [RouterTestingModule],
       declarations: [MenuComponent],
       schemas: [NO_ERRORS_SCHEMA]
-    })
-      .compileComponents();
-  });
+    }).compileComponents();
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(MenuComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
+    //when
+    fixture.detectChanges();
+
+    //then
     expect(component).toBeTruthy();
   });
 });

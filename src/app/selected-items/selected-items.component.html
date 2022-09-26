@@ -1,0 +1,9 @@
+<mat-form-field *ngIf="listService.getSelectedItems().length == 0 && text.length == 0" appearance="fill" class="landing-input">
+<textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="5" cdkAutosizeMaxRows="5" [(ngModel)]="text" (ngModelChange)="parseInputText($event)">
+</textarea>
+</mat-form-field>
+<mat-selection-list [multiple]="false">
+  <mat-list-option *ngFor="let line of lines" (click)="changeLineState(line)" [ngClass]="line.state.toLowerCase()">
+    <div mat-line>{{line.text}}</div>
+  </mat-list-option>
+</mat-selection-list>
