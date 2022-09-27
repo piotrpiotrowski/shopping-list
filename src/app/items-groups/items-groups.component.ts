@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ItemsGroup} from "./items-group.model";
 import {ItemEvent} from "../item-button/item-event.model";
 import {Observable, of} from "rxjs";
+import {Item} from "../item-button/item.model";
 
 @Component({
   selector: 'app-items-groups',
@@ -27,5 +28,9 @@ export class ItemsGroupsComponent implements OnInit {
 
   onSelection(itemEvent: ItemEvent) {
     this.selected.emit(itemEvent);
+  }
+
+  addToUnknown(value: string) {
+    this.itemsGroups[this.itemsGroups.length - 1].items.push(new Item(0, value, this.itemsGroups[this.itemsGroups.length - 1].name, 1));
   }
 }

@@ -7,5 +7,12 @@
     <div class="list">
       <app-item-button *ngFor="let item of itemsGroup.items" [item]="item" (selected)="onSelection($event)"></app-item-button>
     </div>
+    <div *ngIf="itemsGroup.name === itemsGroups[itemsGroups.length -1].name">
+      <mat-form-field style="width: 100%">
+        <mat-label>Add item</mat-label>
+        <input matInput (change)="addToUnknown(input.value)" #input>
+      </mat-form-field>
+      <button mat-flat-button color="primary">Add</button>
+    </div>
   </mat-expansion-panel>
 </mat-accordion>

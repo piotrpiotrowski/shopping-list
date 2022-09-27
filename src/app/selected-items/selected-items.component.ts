@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Line} from "./line.model";
 import {LineState} from "./line-state.enum";
 import {ListService} from "../list/list.service";
+import {Item} from "../item-button/item.model";
 
 @Component({
   selector: 'app-selected-items',
@@ -10,7 +11,8 @@ import {ListService} from "../list/list.service";
 })
 export class SelectedItemsComponent implements OnInit {
 
-  lines: Line[] = [];
+  private lines: Line[] = [];
+  sortedLines: Line[] = [];
   title: string = 'Selected items';
   text: string = '';
 
@@ -23,7 +25,7 @@ export class SelectedItemsComponent implements OnInit {
 
   changeLineState(line: Line) {
     line.state = line.state === LineState.CHECKED ? LineState.NOT_CHECKED : LineState.CHECKED;
-    this.moveCheckedDown();
+    this.sortedLines = this.findNotChecked().concat(this.findChecked());
   }
 
   parseText() {
@@ -31,17 +33,17 @@ export class SelectedItemsComponent implements OnInit {
     this.buildLinesFromState();
   }
 
+  findChecked = () => this.lines.filter(line => line.isStateChecked());
+  findNotChecked = () => this.lines.filter(line => !line.isStateChecked());
+
   private buildLinesFromState = () => {
-    return this.lines = this.listService
+    this.lines = this.listService
       .getSelectedItems()
-      .map(item => this.createLine(item.asString()));
+      .map(item => this.createLine(item));
+    this.sortedLines = this.lines;
   }
 
-  private createLine(line: string) {
-    return new Line(line, LineState.NOT_CHECKED);
-  }
-
-  private moveCheckedDown() {
-    this.lines.sort((a, b) => a.getWeight() - b.getWeight());
+  private createLine(item: Item) {
+    return new Line(item, LineState.NOT_CHECKED);
   }
 }

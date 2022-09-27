@@ -3,7 +3,7 @@
 </textarea>
 </mat-form-field>
 <mat-selection-list [multiple]="false">
-  <mat-list-option *ngFor="let line of lines" (click)="changeLineState(line)" [ngClass]="line.state.toLowerCase()">
-    <div mat-line>{{line.text}}</div>
+  <mat-list-option *ngFor="let line of sortedLines" (click)="changeLineState(line)" [ngClass]="line.state.toLowerCase()">
+    <div mat-line><mat-icon aria-hidden="true" [ngClass]="['list-option-icon', line.item.category]">crop_portrait</mat-icon>{{line.item.asString()}}</div>
   </mat-list-option>
 </mat-selection-list>

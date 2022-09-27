@@ -44,29 +44,41 @@ export class ListService {
       .pipe(map(entry => new ItemsGroup(entry[0], this.sortByName(entry[1]))))
       .pipe(toArray())
       .pipe(map(itemsGroups => this.sortByCategory(itemsGroups)))
+      .pipe(tap(itemsGroups => itemsGroups.push(new ItemsGroup(this.UNKNOWN, []))))
       .pipe(tap(itemsGroups => this.itemsGroups = itemsGroups))
   }
 
   selectFromText(text: string) {
-    const unknownItems: Item[] = [];
     text.trim()
       .split('\n')
       .filter(value => value.length > 0)
-      .forEach(line => {
-        const quantity = this.extractQuantity(line);
-        const name = line.replace(` ${quantity}x`, '')
-        const item = this.itemsGroups
-          .map(value => value.findItem(name))
-          .find(value => value);
-        if (item) {
-          item.setQuantity(quantity);
-        } else {
-          unknownItems.push(new Item(0, name, this.UNKNOWN, quantity));
-        }
-      });
-    if (unknownItems.length > 0) {
-      this.itemsGroups.push(new ItemsGroup(this.UNKNOWN, unknownItems))
+      .map(line => this.extractAttributes(line))
+      .forEach(attributes => this.selectBy(attributes));
+  }
+
+  private selectBy(attributes: { quantity: number; name: string }) {
+    const item = this.findItem(attributes.name);
+    if (item) {
+      item.setQuantity(attributes.quantity);
+    } else {
+      this.getGroupUnknown().items.push(new Item(0, attributes.name, this.UNKNOWN, attributes.quantity));
     }
+  }
+
+  private findItem(name: string) {
+    return this.itemsGroups
+      .map(value => value.findItem(name))
+      .find(value => value);
+  }
+
+  private getGroupUnknown() {
+    return this.itemsGroups[this.itemsGroups.length - 1];
+  }
+
+  private extractAttributes(line: string) {
+    const quantity = this.extractQuantity(line);
+    const name = line.replace(` ${quantity}x`, '')
+    return {name: name, quantity: quantity};
   }
 
   private convertToItem(value: string) {
@@ -83,7 +95,7 @@ export class ListService {
   }
 
   private extractQuantity(line: string) {
-    let value = line.replace(/[a-zA-z ąęłóżźńĄĘŁÓŻŹŃ]/g, '');
+    let value = line.replace(/[a-zA-z ąęłóżźńĄĘŁÓŻŹŃöäüßÖÄÜ]/g, '');
     return value.length > 0 ? Number(value) : 1;
   }
 }
