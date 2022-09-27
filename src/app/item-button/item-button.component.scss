@@ -1,7 +1,24 @@
+.item {
+  width: 100%;
+  display: flex;
+  margin-bottom: 10px;
+}
+
 .item-button {
   width: 100%;
   color: #ffffff;
-  margin-bottom: 10px;
+}
+
+.item-actions {
+  height: 30px;
+  padding-top: 6px;
+  padding-left: 10px;
+  color: #ffffff;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  z-index: 10;
+  margin-left: -34px;
+  background-color: transparent;
 }
 
 .selected {

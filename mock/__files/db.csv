@@ -1,12 +1,16 @@
 Płyn do prania Filetti,chemia
 Płyn do mycia naczyń,chemia
 Kostki do zmywarki,chemia
+Ściereczki do naczyń,chemia
 Späzli,dania
 Lazania,dania
 Waciki do pupy,dziecięce
 Pieluszki,dziecięce
 Pasta do zebów dla dzieci,dziecięce
 Mus owocowy,dziecięce
+Kaszka niemowleca,dziecięce
+Podkład na przewijak,dziecięce
+Wkładki na piersi,dziecięce
 Papier toaletowy,higieniczne
 Reczniki papierowe,higieniczne
 Papier nawilżony,higieniczne
@@ -14,6 +18,12 @@ Pasta do zebów dla dorosłych,higieniczne
 Mydło w kostce,higieniczne
 Mudło w płynie,higieniczne
 Patyczki do uszu,higieniczne
+Witamina C,higieniczne
+Witamina D,higieniczne
+Plaster,higieniczne
+Ostrza do golarki,higieniczne
+Żel pod prysznic,higieniczne
+Przylepiec akrylowy,higieniczne
 Kabanosy,mięso
 Fleichkäse,mięso
 Mięso mielone,mięso
@@ -46,6 +56,7 @@ Serek truskawkowy,nabiał
 Serek czekoladowy,nabiał
 Raumkäse Luzerner,nabiał
 Serek maskarpone,nabiał
+Drożdże,nabiał
 Sok pomarańczowy,napoje
 Syrop do rozcięczenia,napoje
 Most,napoje
@@ -57,6 +68,8 @@ Herbata owocowa,napoje
 Herbata zielona,napoje
 Kawa,napoje
 Kakao,napoje
+Salbeitee,napoje
+Mönch mit Salbei Tee,napoje
 Orzechy włoskie,orzechy
 Pistacje,orzechy
 Jabłka,owoce
@@ -86,21 +99,16 @@ Majonez,przyprawy
 Sól,przyprawy
 Pieprz,przyprawy
 Keczup,przyprawy
-Drożdże,różne
 Olej,różne
 Oliwa,różne
 Zurisachs,różne
 Worki na kompost,różne
-Witamina C,różne
-Witamina D,różne
-Ściereczki do naczyń,różne
-Plaster,różne
-Przylepiec akrylowy,różne
+Pomidory w puszcze,różne
+Koncentrat pomidorowy,różne
 Czekolada,słodycze
 Czekolada gorzka,słodycze
 Dżem,słodycze
 Czekolada do smarowania,słodycze
-Kaszka niemowleca,sypkie
 Cukier,sypkie
 Mąka,sypkie
 Roll gerste,sypkie
@@ -110,6 +118,7 @@ Makaron świderki,sypkie
 Makaron na lazanie,sypkie
 Kasza gryczana,sypkie
 Płatki owsiane,sypkie
+Skrobia ziemniaczana,sypkie
 Papryka,warzywa
 Marchewka,warzywa
 Por,warzywa
