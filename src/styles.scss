@@ -77,3 +77,12 @@ $theme: mat.define-light-theme((
 .nieznane {
   background-color: rgba(246, 74, 4, 0.7) !important;
 }
+
+.mrożone {
+  background-color: rgba(2, 74, 115, 0.7) !important;
+}
+
+.dziecięce {
+  background: rgb(20, 116, 222, 0.7);
+  background: linear-gradient(90deg, rgba(255, 0, 0, 0.7) 20%, rgba(20, 116, 222, 0.7) 100%) !important;
+}

@@ -33,9 +33,9 @@ export class ListService {
     }
     const headers = new HttpHeaders().set('Content-Type', 'text/csv; charset=utf-8');
     return this.http.get("/api/db.csv", {headers, responseType: 'text'})
-      .pipe(mergeMap(value => from(value.split('\n'))))
-      .pipe(filter(value => value.length > 0))
-      .pipe(map(value => this.convertToItem(value)))
+      .pipe(mergeMap(text => from(text.split('\n'))))
+      .pipe(filter(row => row.length > 0))
+      .pipe(map((row, index) => this.convertToItem(row, index + 1)))
       .pipe(groupBy(
         item => item.category,
         {element: p => p}
@@ -81,9 +81,9 @@ export class ListService {
     return {name: name, quantity: quantity};
   }
 
-  private convertToItem(value: string) {
-    const columns = value.split(',');
-    return new Item(Number(columns[0]), columns[1], columns[2].trimEnd());
+  private convertToItem(row: string, id: number) {
+    const columns = row.split(',');
+    return new Item(id, columns[0], columns[1].trimEnd());
   }
 
   private sortByName(items: Item[]) {
