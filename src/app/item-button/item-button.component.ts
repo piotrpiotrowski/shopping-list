@@ -12,11 +12,14 @@ export class ItemButtonComponent implements OnInit {
 
   @Input() item: Item = new Item(0, '', '');
   @Output() selected = new EventEmitter<ItemEvent>();
+  addNoteVisible: boolean = false;
+  noteText: string = '';
 
   constructor() {
   }
 
   ngOnInit(): void {
+    this.noteText = this.item.note;
   }
 
   addToList() {
@@ -45,5 +48,16 @@ export class ItemButtonComponent implements OnInit {
       return 'selected';
     }
     return 'multi_selected'
+  }
+
+  saveNote(event: any) {
+    if (event.keyCode === 13) {
+      this.addNoteVisible = false;
+      this.item.addNote(this.noteText);
+    }
+  }
+
+  showNoteInput() {
+    this.addNoteVisible = true;
   }
 }

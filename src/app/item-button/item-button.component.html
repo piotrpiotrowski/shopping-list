@@ -4,5 +4,19 @@
     <mat-icon *ngIf="isStateSelected()" aria-hidden="true">done</mat-icon>
     <span *ngIf="isStateMultiSelected()">{{item.quantity}}x</span>
   </button>
-  <mat-icon aria-hidden="true" [ngClass]="['item-actions']">more_vert</mat-icon>
+  <mat-icon *ngIf="item.quantity > 0" aria-hidden="true" [ngClass]="['item-actions']" [matMenuTriggerFor]="menu">more_vert</mat-icon>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="removeFromList()">
+      <mat-icon>remove_shopping_cart</mat-icon>
+      <span>Take off</span>
+    </button>
+    <button mat-menu-item (click)="showNoteInput()">
+      <mat-icon>note_add</mat-icon>
+      <span>Add note</span>
+    </button>
+  </mat-menu>
 </div>
+<mat-form-field *ngIf="addNoteVisible" class="item-note" appearance="fill">
+  <mat-label>Add note</mat-label>
+  <input matInput [(ngModel)]="noteText" (keyup)="saveNote($event)" enterkeyhint="done">
+</mat-form-field>

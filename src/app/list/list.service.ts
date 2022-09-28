@@ -56,10 +56,11 @@ export class ListService {
       .forEach(attributes => this.selectBy(attributes));
   }
 
-  private selectBy(attributes: { quantity: number; name: string }) {
+  private selectBy(attributes: { quantity: number; name: string, note: string }) {
     const item = this.findItem(attributes.name);
     if (item) {
       item.setQuantity(attributes.quantity);
+      item.addNote(attributes.note);
     } else {
       this.getGroupUnknown().items.push(new Item(0, attributes.name, this.UNKNOWN, attributes.quantity));
     }
@@ -77,8 +78,10 @@ export class ListService {
 
   private extractAttributes(line: string) {
     const quantity = this.extractQuantity(line);
+    const note = this.extractNote(line);
     const name = line.replace(` ${quantity}x`, '')
-    return {name: name, quantity: quantity};
+      .replace(` (${note})`, '');
+    return {name: name, quantity: quantity, note: note};
   }
 
   private convertToItem(row: string, id: number) {
@@ -95,7 +98,13 @@ export class ListService {
   }
 
   private extractQuantity(line: string) {
-    let value = line.replace(/[a-zA-z ąęłóżźńĄĘŁÓŻŹŃöäüßÖÄÜ]/g, '');
+    let value = line.replace(/[a-zA-z ąęłóżźńĄĘŁÓŻŹŃöäüßÖÄÜ()]/g, '');
     return value.length > 0 ? Number(value) : 1;
+  }
+
+  private extractNote(line: string) {
+    const noteBegin = line.indexOf('(');
+    const noteEnd = line.indexOf(')');
+    return noteBegin === -1 ? '' : line.substring(noteBegin + 1, noteEnd);
   }
 }

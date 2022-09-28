@@ -1,5 +1,5 @@
 export class Item {
-  constructor(public id: number, public name: string, public category: string, public quantity: number = 0) {
+  constructor(public id: number, public name: string, public category: string, public quantity: number = 0, public note: string = '') {
   }
 
   public increaseQuantity() {
@@ -10,9 +10,17 @@ export class Item {
     this.quantity = 0;
   }
 
-  asString = () => this.quantity == 1 ? this.name : `${this.name} ${this.quantity}x`
+  asString = () => `${this.name}${this.resolveQuantityText()}${this.resolveNoteText()}`
 
   setQuantity(quantity: number) {
     this.quantity = quantity;
   }
+
+  addNote(note: string) {
+    this.note = note;
+  }
+
+  private resolveNoteText = () => this.note.length === 0 ? '' : ` (${this.note})`;
+
+  private resolveQuantityText = () => this.quantity == 1 ? '' : ` ${this.quantity}x`;
 }

@@ -30,7 +30,8 @@ export class ItemsGroupsComponent implements OnInit {
     this.selected.emit(itemEvent);
   }
 
-  addToUnknown(value: string) {
-    this.itemsGroups[this.itemsGroups.length - 1].items.push(new Item(0, value, this.itemsGroups[this.itemsGroups.length - 1].name, 1));
+  addToUnknown(input: HTMLInputElement) {
+    this.itemsGroups[this.itemsGroups.length - 1].items.push(new Item(0, input.value, this.itemsGroups[this.itemsGroups.length - 1].name, 1));
+    input.value = '';
   }
 }

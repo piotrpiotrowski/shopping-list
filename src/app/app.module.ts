@@ -16,10 +16,11 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MenuComponent} from "./menu/menu.component";
 import {MatListModule} from "@angular/material/list";
 import {HomeComponent} from "./home/home.component";
-import { SelectedItemsComponent } from './selected-items/selected-items.component';
+import {SelectedItemsComponent} from './selected-items/selected-items.component';
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     MatListModule,
     MatInputModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
