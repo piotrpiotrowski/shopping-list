@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ListService} from "../list/list.service";
 import {Item} from "../list/item.model";
+import {HistoryService} from "../history/history.service";
 
 @Component({
   selector: 'app-selected-items',
@@ -13,11 +14,12 @@ export class SelectedItemsComponent implements OnInit {
   arrangedItems: Item[] = [];
   text: string = '';
 
-  constructor(public listService: ListService) {
+  constructor(public listService: ListService, private historyService: HistoryService) {
   }
 
   ngOnInit(): void {
     this.buildLinesFromState();
+    this.historyService.addEntry(this.listService.getItemsAsText());
   }
 
   changeLineState(item: Item) {

@@ -15,6 +15,7 @@ export class MenuComponent {
     [
       ['', 'Build list'],
       ['selected-items', 'Display list'],
+      ['history-list', 'Display history'],
     ]
   );
 

@@ -23,8 +23,14 @@ export class ListService {
   }
 
   append() {
-    const textInLines = this.getSelectedItems().map(item => item.asString()).join('\n');
+    const textInLines = this.getItemsAsText();
     this.clipboard.copy(textInLines);
+  }
+
+  getItemsAsText() {
+    return this.getSelectedItems()
+      .map(item => item.asString())
+      .join('\n');
   }
 
   loadItemsGroups(): Observable<ItemsGroup[]> {

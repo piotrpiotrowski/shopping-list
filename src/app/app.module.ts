@@ -21,6 +21,7 @@ import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatMenuModule} from "@angular/material/menu";
+import { HistoryListComponent } from './history-list/history-list.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {MatMenuModule} from "@angular/material/menu";
     ItemsGroupsComponent,
     MenuComponent,
     HomeComponent,
-    SelectedItemsComponent
+    SelectedItemsComponent,
+    HistoryListComponent
   ],
   imports: [
     BrowserModule,
