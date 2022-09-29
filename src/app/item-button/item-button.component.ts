@@ -22,7 +22,7 @@ export class ItemButtonComponent implements OnInit {
 
   addToList() {
     this.item.increaseQuantity();
-    this.selected.emit(this.item);
+    this.emitEvent();
   }
 
   removeFromList() {
@@ -52,10 +52,15 @@ export class ItemButtonComponent implements OnInit {
     if (event.keyCode === 13) {
       this.addNoteVisible = false;
       this.item.addNote(this.noteText);
+      this.emitEvent();
     }
   }
 
   showNoteInput() {
     this.addNoteVisible = true;
+  }
+
+  private emitEvent() {
+    this.selected.emit(this.item);
   }
 }
