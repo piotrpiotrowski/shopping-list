@@ -1,9 +1,9 @@
 <mat-form-field *ngIf="listService.getSelectedItems().length == 0 && text.length == 0" appearance="fill" class="landing-input">
-<textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="5" cdkAutosizeMaxRows="5" [(ngModel)]="text" (ngModelChange)="parseText()">
+<textarea id="landing" matInput cdkTextareaAutosize cdkAutosizeMinRows="5" cdkAutosizeMaxRows="5" [(ngModel)]="text" (ngModelChange)="parseText()">
 </textarea>
 </mat-form-field>
 <mat-selection-list [multiple]="false">
-  <mat-list-option *ngFor="let line of sortedLines" (click)="changeLineState(line)" [ngClass]="line.state.toLowerCase()">
-    <div mat-line><mat-icon aria-hidden="true" [ngClass]="['list-option-icon', line.item.category]">crop_portrait</mat-icon>{{line.item.asString()}}</div>
+  <mat-list-option *ngFor="let item of arrangedItems" (click)="changeLineState(item)" [ngClass]="item.state.toLowerCase()">
+    <div mat-line><mat-icon aria-hidden="true" [ngClass]="['list-option-icon', item.category]">crop_portrait</mat-icon>{{item.asString()}}</div>
   </mat-list-option>
 </mat-selection-list>

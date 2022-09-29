@@ -1,7 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Item} from "./item.model";
-import {ItemEvent} from "./item-event.model";
-import {ItemOperation} from "./Item-operation.enum";
+import {Item} from "../list/item.model";
 
 @Component({
   selector: 'app-item-button',
@@ -11,7 +9,7 @@ import {ItemOperation} from "./Item-operation.enum";
 export class ItemButtonComponent implements OnInit {
 
   @Input() item: Item = new Item(0, '', '');
-  @Output() selected = new EventEmitter<ItemEvent>();
+  @Output() selected = new EventEmitter<Item>();
   addNoteVisible: boolean = false;
   noteText: string = '';
 
@@ -24,12 +22,12 @@ export class ItemButtonComponent implements OnInit {
 
   addToList() {
     this.item.increaseQuantity();
-    this.selected.emit(new ItemEvent(this.item, ItemOperation.ADD));
+    this.selected.emit(this.item);
   }
 
   removeFromList() {
     this.item.setZeroQuantity()
-    this.selected.emit(new ItemEvent(this.item, ItemOperation.REMOVE));
+    this.selected.emit(this.item);
   }
 
   isStateSelected() {

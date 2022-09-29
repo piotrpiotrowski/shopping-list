@@ -1,10 +1,9 @@
 import {Injectable} from '@angular/core';
-import {Item} from "../item-button/item.model";
+import {Item} from "./item.model";
 import {Clipboard} from '@angular/cdk/clipboard';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {filter, from, groupBy, map, mergeMap, Observable, of, tap, toArray, zip} from "rxjs";
 import {ItemsGroup} from "../items-groups/items-group.model";
-import {ItemEvent} from "../item-button/item-event.model";
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +13,7 @@ export class ListService {
   private itemsGroups: ItemsGroup[] = [];
 
   private readonly UNKNOWN = 'nieznane';
+  private readonly QUANTITY_EXTRACTION_REGEXP = / (?<quantity>[0-9]+)x/g;
 
   constructor(private clipboard: Clipboard, private http: HttpClient) {
   }
@@ -22,7 +22,7 @@ export class ListService {
     return this.itemsGroups.reduce((accumulator, itemsGroup) => accumulator.concat(itemsGroup.filterSelected()), new Array<Item>());
   }
 
-  append(itemEvent: ItemEvent) {
+  append() {
     const textInLines = this.getSelectedItems().map(item => item.asString()).join('\n');
     this.clipboard.copy(textInLines);
   }
@@ -98,8 +98,8 @@ export class ListService {
   }
 
   private extractQuantity(line: string) {
-    let value = line.replace(/[a-zA-z ąęłóżźńĄĘŁÓŻŹŃöäüßÖÄÜ()]/g, '');
-    return value.length > 0 ? Number(value) : 1;
+    const matches = this.QUANTITY_EXTRACTION_REGEXP.exec(line);
+    return matches && matches[1] ? Number(matches[1]) : 1;
   }
 
   private extractNote(line: string) {

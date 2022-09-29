@@ -1,5 +1,7 @@
+import {ItemState} from "./item-state.enum";
+
 export class Item {
-  constructor(public id: number, public name: string, public category: string, public quantity: number = 0, public note: string = '') {
+  constructor(public id: number, public name: string, public category: string, public quantity: number = 0, public note: string = '', public state: ItemState = ItemState.NOT_CHECKED) {
   }
 
   public increaseQuantity() {
@@ -19,6 +21,12 @@ export class Item {
   addNote(note: string) {
     this.note = note;
   }
+
+  flipState() {
+    this.state = this.state === ItemState.CHECKED ? ItemState.NOT_CHECKED : ItemState.CHECKED;
+  }
+
+  isStateChecked = () => this.state === ItemState.CHECKED;
 
   private resolveNoteText = () => this.note.length === 0 ? '' : ` (${this.note})`;
 

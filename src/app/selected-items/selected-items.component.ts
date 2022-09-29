@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Line} from "./line.model";
-import {LineState} from "./line-state.enum";
 import {ListService} from "../list/list.service";
-import {Item} from "../item-button/item.model";
+import {Item} from "../list/item.model";
 
 @Component({
   selector: 'app-selected-items',
@@ -11,9 +9,8 @@ import {Item} from "../item-button/item.model";
 })
 export class SelectedItemsComponent implements OnInit {
 
-  private lines: Line[] = [];
-  sortedLines: Line[] = [];
-  title: string = 'Selected items';
+  private items: Item[] = [];
+  arrangedItems: Item[] = [];
   text: string = '';
 
   constructor(public listService: ListService) {
@@ -23,9 +20,13 @@ export class SelectedItemsComponent implements OnInit {
     this.buildLinesFromState();
   }
 
-  changeLineState(line: Line) {
-    line.state = line.state === LineState.CHECKED ? LineState.NOT_CHECKED : LineState.CHECKED;
-    this.sortedLines = this.findNotChecked().concat(this.findChecked());
+  changeLineState(item: Item) {
+    item.flipState()
+    this.arrangedItems = this.arrangeItems();
+  }
+
+  private arrangeItems() {
+    return this.findNotChecked().concat(this.findChecked());
   }
 
   parseText() {
@@ -33,17 +34,12 @@ export class SelectedItemsComponent implements OnInit {
     this.buildLinesFromState();
   }
 
-  findChecked = () => this.lines.filter(line => line.isStateChecked());
-  findNotChecked = () => this.lines.filter(line => !line.isStateChecked());
+  findChecked = () => this.items.filter(line => line.isStateChecked());
+  findNotChecked = () => this.items.filter(line => !line.isStateChecked());
 
   private buildLinesFromState = () => {
-    this.lines = this.listService
-      .getSelectedItems()
-      .map(item => this.createLine(item));
-    this.sortedLines = this.lines;
-  }
-
-  private createLine(item: Item) {
-    return new Line(item, LineState.NOT_CHECKED);
+    this.items = this.listService
+      .getSelectedItems();
+    this.arrangedItems = this.arrangeItems();
   }
 }
