@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HistoryService} from "../history/history.service";
+import {HistoryEntry} from "../history/history.entry.model";
 import {Clipboard} from '@angular/cdk/clipboard';
 
 @Component({
@@ -12,21 +13,18 @@ export class HistoryListComponent implements OnInit {
   constructor(public historyService: HistoryService, private clipboard: Clipboard) {
   }
 
-  entries: string[][] = []
+  entries: HistoryEntry[] = [];
 
   ngOnInit(): void {
-    this.entries = this.historyService.getAllEntries()
-      .map(entry => entry.concat(['hide']));
+    this.entries = this.historyService.getAllEntries();
   }
 
-  extractKey = (entry: string[]) => entry[0].replace(this.historyService.HISTORY_BASE_KEY, '');
+  extractKey = (key: string) => key.replace(this.historyService.HISTORY_BASE_KEY, '');
 
-  toggle(entry: string[]) {
-    entry[2] = this.isVisible(entry) ? 'hide' : 'show';
-    if (this.isVisible(entry)) {
-      this.clipboard.copy(entry[1]);
+  toggle(entry: HistoryEntry) {
+    entry.visible = !entry.visible;
+    if (entry.visible) {
+      this.clipboard.copy(entry.value.map(item => item.asString()).join('\n'));
     }
   }
-
-  isVisible = (entry: string[]) => entry[2] === 'show';
 }

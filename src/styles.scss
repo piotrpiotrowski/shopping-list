@@ -14,11 +14,11 @@ $theme: mat.define-light-theme((
 @include mat.all-component-themes($theme);
 
 .body {
-  background-color: bisque;
+  background-color: #ffe4c4;
 }
 
 .pieczywo {
-  background-color: rgba(208, 119, 5, 0.7) !important;
+  background-color: rgba(134, 77, 4, 0.7) !important;
 }
 
 .napoje {
@@ -55,7 +55,6 @@ $theme: mat.define-light-theme((
 
 .owoce {
   background-color: rgba(250, 166, 55, 0.7) !important;
-
 }
 
 .przyprawy {

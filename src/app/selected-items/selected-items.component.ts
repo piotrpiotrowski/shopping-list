@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ListService} from "../list/list.service";
 import {Item} from "../list/item.model";
 import {HistoryService} from "../history/history.service";
@@ -8,7 +8,7 @@ import {HistoryService} from "../history/history.service";
   templateUrl: './selected-items.component.html',
   styleUrls: ['./selected-items.component.scss']
 })
-export class SelectedItemsComponent implements OnInit {
+export class SelectedItemsComponent implements OnInit, OnDestroy {
 
   private items: Item[] = [];
   arrangedItems: Item[] = [];
@@ -19,7 +19,10 @@ export class SelectedItemsComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildLinesFromState();
-    this.historyService.addEntry(this.listService.getItemsAsText());
+  }
+
+  ngOnDestroy(): void {
+    this.historyService.addEntry(this.listService.getSelectedItems());
   }
 
   changeLineState(item: Item) {
@@ -37,6 +40,7 @@ export class SelectedItemsComponent implements OnInit {
   }
 
   findChecked = () => this.items.filter(line => line.isStateChecked());
+
   findNotChecked = () => this.items.filter(line => !line.isStateChecked());
 
   private buildLinesFromState = () => {

@@ -2,6 +2,8 @@ Płyn do prania Filetti,chemia
 Płyn do mycia naczyń,chemia
 Kostki do zmywarki,chemia
 Ściereczki do naczyń,chemia
+Kostka sedesowa,chemia
+Płyn do sedesu,chemia
 Späzli,dania
 Lazania,dania
 Waciki do pupy,dziecięce
@@ -28,7 +30,8 @@ Przylepiec akrylowy,higieniczne
 Kabanosy,mięso
 Fleichkäse,mięso
 Mięso mielone,mięso
-Mięso wołowe z kościa,mięso
+Steak,mięso
+Wołowina z kościa,mięso
 Mięso na pieczeń,mięso
 Boczek,mięso
 Szynka,mięso
@@ -36,6 +39,7 @@ Schab,mięso
 Poledwica,mięso
 Biała kiełbasa,mięso
 Różowa kielbasa,mięso
+Pierś z kurczaka,mięso
 Kurczak,mięso
 Kurczak pieczony,mięso
 Ryba,mięso
@@ -67,6 +71,7 @@ Sok jabłkowy,napoje
 Woda,napoje
 Schorle,napoje
 Herbata czarna,napoje
+Kwasek cytrynowy,napoje
 Herbata owocowa,napoje
 Herbata zielona,napoje
 Kawa,napoje
@@ -106,8 +111,8 @@ Pieprz,przyprawy
 Keczup,przyprawy
 Olej,różne
 Oliwa,różne
-Zurisachs,różne
-Worki na kompost,różne
+Zurisacks,różne
+Komposacks,różne
 Pomidory w puszcze,różne
 Koncentrat pomidorowy,różne
 Czekolada,słodycze

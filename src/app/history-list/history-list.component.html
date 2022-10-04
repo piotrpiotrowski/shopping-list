@@ -1,8 +1,8 @@
 <mat-action-list>
   <div *ngFor="let entry of entries">
-    <button mat-list-item (click)="toggle(entry)">{{extractKey(entry)}}</button>
-    <div *ngIf="isVisible(entry)" class="entry-value">
-      <div *ngFor="let line of entry[1].split('\n')">{{line}}</div>
+    <button mat-list-item (click)="toggle(entry)">{{extractKey(entry.key)}}</button>
+    <div *ngIf="entry.visible" class="entry-value">
+      <div *ngFor="let item of entry.value">{{item.asString()}}</div>
     </div>
   </div>
 </mat-action-list>

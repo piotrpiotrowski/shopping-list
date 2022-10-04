@@ -1,4 +1,7 @@
 import {Injectable} from '@angular/core';
+import {ListService} from "../list/list.service";
+import {Item} from "../list/item.model";
+import {HistoryEntry} from "./history.entry.model";
 
 @Injectable({
   providedIn: 'root'
@@ -10,21 +13,29 @@ export class HistoryService {
   constructor() {
   }
 
-  addEntry(text: string) {
-    if (text.length === 0) {
+  addEntry(items: Item[]) {
+    if (items.length === 0) {
       return;
     }
     let key = this.buildKey(new Date());
-    localStorage.setItem(key, text);
+    if (localStorage.getItem(key)) {
+      localStorage.setItem(key, JSON.stringify(this.getByKey(key).value.concat(items)));
+    } else {
+      localStorage.setItem(key, JSON.stringify(items));
+    }
   }
 
-  getAllEntries(): string[][] {
-    return [...Array(30).keys()]
+  getAllEntries = () =>
+    [...Array(30).keys()]
       .map(offset => this.subtractDayFromToday(offset))
       .map(date => this.buildKey(date))
       .filter(key => localStorage.getItem(key))
-      .map(key => [key, localStorage.getItem(key) as string]);
-  }
+      .map(key => this.getByKey(key));
+
+  private getByKey = (key: string) => new HistoryEntry(key, this.toItems(localStorage.getItem(key) as string), false)
+
+  private toItems = (jsonText: string) => (JSON.parse(jsonText) as Item[])
+    .map(object => new Item(object.id, object.name, object.category, object.quantity, object.note, object.state));
 
   private buildKey = (date: Date) => `${this.HISTORY_BASE_KEY} ${date.toDateString()}`;
 

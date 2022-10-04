@@ -18,19 +18,11 @@ export class ListService {
   constructor(private clipboard: Clipboard, private http: HttpClient) {
   }
 
-  getSelectedItems() {
-    return this.itemsGroups.reduce((accumulator, itemsGroup) => accumulator.concat(itemsGroup.filterSelected()), new Array<Item>());
-  }
+  getSelectedItems = () => this.itemsGroups.flatMap(itemsGroup => itemsGroup.filterSelected());
 
   append() {
     const textInLines = this.getItemsAsText();
     this.clipboard.copy(textInLines);
-  }
-
-  getItemsAsText() {
-    return this.getSelectedItems()
-      .map(item => item.asString())
-      .join('\n');
   }
 
   loadItemsGroups(): Observable<ItemsGroup[]> {
@@ -61,6 +53,11 @@ export class ListService {
       .map(line => this.extractAttributes(line))
       .forEach(attributes => this.selectBy(attributes));
   }
+
+  private getItemsAsText = () =>
+    this.getSelectedItems()
+      .map(item => item.asString())
+      .join('\n');
 
   private selectBy(attributes: { quantity: number; name: string, note: string }) {
     const item = this.findItem(attributes.name);
