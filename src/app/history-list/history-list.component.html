@@ -1,6 +1,12 @@
 <mat-action-list>
   <div *ngFor="let entry of entries">
-    <button mat-list-item (click)="toggle(entry)">{{extractKey(entry.key)}}</button>
+    <div class="entry-key">
+      <button mat-list-item (click)="toggle(entry)">
+        {{extractKey(entry.key)}}
+      </button>
+      <mat-icon class="copy-icon" (click)="copy(entry)">file_copy</mat-icon>
+      <mat-icon class="add-icon" (click)="addToSelected(entry)">add</mat-icon>
+    </div>
     <div *ngIf="entry.visible" class="entry-value">
       <div *ngFor="let item of entry.value">{{item.asString()}}</div>
     </div>

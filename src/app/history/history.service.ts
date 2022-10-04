@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {ListService} from "../list/list.service";
 import {Item} from "../list/item.model";
 import {HistoryEntry} from "./history.entry.model";
 
@@ -19,10 +18,14 @@ export class HistoryService {
     }
     let key = this.buildKey(new Date());
     if (localStorage.getItem(key)) {
-      localStorage.setItem(key, JSON.stringify(this.getByKey(key).value.concat(items)));
+      localStorage.setItem(key, JSON.stringify(this.merge(key, items)));
     } else {
       localStorage.setItem(key, JSON.stringify(items));
     }
+  }
+
+  private merge(key: string, items: Item[]) {
+    return this.getByKey(key).value.concat(items);
   }
 
   getAllEntries = () =>

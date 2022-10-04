@@ -23,8 +23,18 @@ export class HistoryListComponent implements OnInit {
 
   toggle(entry: HistoryEntry) {
     entry.visible = !entry.visible;
-    if (entry.visible) {
-      this.clipboard.copy(entry.value.map(item => item.asString()).join('\n'));
-    }
   }
+
+  copy(entry: HistoryEntry) {
+    this.clipboard.copy(this.getItemsAsText(entry));
+  }
+
+  addToSelected(entry: HistoryEntry) {
+
+  }
+
+  private getItemsAsText = (entry: HistoryEntry) =>
+    entry.value
+      .map(item => item.asString())
+      .join('\n');
 }
