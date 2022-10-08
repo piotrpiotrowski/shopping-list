@@ -31,7 +31,7 @@ export class ListService {
       .get('/api/db.csv', {headers, responseType: 'text'})
       .pipe(mergeMap((text) => from(text.split('\n'))))
       .pipe(filter((row) => row.length > 0))
-      .pipe(map((row, index) => this.convertToItem(row, index + 1)))
+      .pipe(map((row) => this.convertToItem(row)))
       .pipe(groupBy((item) => item.category, {element: (p) => p}))
       .pipe(mergeMap((group) => zip(of(group.key), group.pipe(toArray()))))
       .pipe(map((entry) => new ItemsGroup(entry[0], this.sortByName(entry[1]))))
@@ -59,7 +59,7 @@ export class ListService {
       item.addNote(itemDescriptor.note);
     } else {
       this.getGroupUnknown().items.push(
-        new Item(0, itemDescriptor, this.UNKNOWN)
+        new Item(itemDescriptor, this.UNKNOWN)
       );
     }
   }
@@ -74,9 +74,9 @@ export class ListService {
     return this.itemsGroups[this.itemsGroups.length - 1];
   }
 
-  private convertToItem(row: string, id: number) {
+  private convertToItem(row: string) {
     const columns = row.split(',');
-    return new Item(id, new ItemDescriptor(columns[0], 0), columns[1].trimEnd());
+    return new Item(new ItemDescriptor(columns[0], 0), columns[1].trimEnd());
   }
 
   private sortByName(items: Item[]) {

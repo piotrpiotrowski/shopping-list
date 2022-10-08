@@ -47,7 +47,6 @@ export class HistoryService {
     (JSON.parse(jsonText) as Item[]).map(
       (object) =>
         new Item(
-          object.id,
           new ItemDescriptor(object.descriptor.name, object.descriptor.quantity, object.descriptor.note),
           object.category,
           object.state

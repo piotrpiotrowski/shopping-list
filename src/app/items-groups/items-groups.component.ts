@@ -32,7 +32,6 @@ export class ItemsGroupsComponent implements OnInit {
   addToUnknown(input: HTMLInputElement) {
     this.itemsGroups[this.itemsGroups.length - 1].items.push(
       new Item(
-        0,
         new ItemDescriptor(input.value, 1),
         this.itemsGroups[this.itemsGroups.length - 1].name
       )

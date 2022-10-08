@@ -7,7 +7,7 @@ describe('HistoryEntry', () => {
     //given
     const historyEntry = new HistoryEntry(
       'key',
-      [new Item(1, new ItemDescriptor('n', 1), 'c')],
+      [new Item(new ItemDescriptor('n', 1), 'c')],
       false
     );
 
@@ -22,13 +22,13 @@ describe('HistoryEntry', () => {
     //given
     const historyEntry = new HistoryEntry(
       'key',
-      [new Item(1, new ItemDescriptor('n', 1), 'c')],
+      [new Item(new ItemDescriptor('n', 1), 'c')],
       false
     );
 
     //when
     const updatedHistoryEntry = historyEntry.appendItems([
-      new Item(2, new ItemDescriptor('o', 1), 'c')
+      new Item(new ItemDescriptor('o', 1), 'c')
     ]);
 
     //then
@@ -39,18 +39,17 @@ describe('HistoryEntry', () => {
     //given
     const historyEntry = new HistoryEntry(
       'key',
-      [new Item(1, new ItemDescriptor('n', 1, 'no1'), 'c')],
+      [new Item(new ItemDescriptor('n', 1, 'no1'), 'c')],
       false
     );
 
     //when
     const updatedHistoryEntry = historyEntry.appendItems([
-      new Item(1, new ItemDescriptor('n', 2, 'no2'), 'c')
+      new Item(new ItemDescriptor('n', 2, 'no2'), 'c')
     ]);
 
     //then
     expect(updatedHistoryEntry.value.length).toEqual(1);
-    expect(updatedHistoryEntry.value[0].id).toEqual(1);
     expect(updatedHistoryEntry.value[0].descriptor.name).toEqual('n');
     expect(updatedHistoryEntry.value[0].category).toEqual('c');
     expect(updatedHistoryEntry.value[0].descriptor.quantity).toEqual(2);

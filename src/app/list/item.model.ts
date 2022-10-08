@@ -3,7 +3,6 @@ import {ItemDescriptor} from "./item-descriptor.model";
 
 export class Item {
   constructor(
-    public id: number,
     public descriptor: ItemDescriptor,
     public category: string,
     public state: ItemState = ItemState.NOT_CHECKED

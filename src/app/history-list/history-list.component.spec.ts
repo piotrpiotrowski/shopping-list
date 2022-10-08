@@ -64,7 +64,7 @@ describe('HistoryListComponent', () => {
 
   it('should display a shopping list when a history entry was clicked', () => {
     //given
-    const historyEntry = new HistoryEntry("today", [new Item(1, new ItemDescriptor('n', 1), 'c'), new Item(1, new ItemDescriptor('o', 3), 'c')], false);
+    const historyEntry = new HistoryEntry("today", [new Item(new ItemDescriptor('n', 1), 'c'), new Item(new ItemDescriptor('o', 3), 'c')], false);
     historyService.getAllEntries.and.returnValue([historyEntry]);
 
     //when
@@ -87,7 +87,7 @@ describe('HistoryListComponent', () => {
 
   it('should show more_vert icon when a history entry was clicked', () => {
     //given
-    const historyEntry = new HistoryEntry("today", [new Item(1, new ItemDescriptor('n', 1), 'c'), new Item(1, new ItemDescriptor('o', 3), 'c')], false);
+    const historyEntry = new HistoryEntry("today", [new Item(new ItemDescriptor('n', 1), 'c'), new Item(new ItemDescriptor('o', 3), 'c')], false);
     historyService.getAllEntries.and.returnValue([historyEntry]);
 
     //when
@@ -110,7 +110,7 @@ describe('HistoryListComponent', () => {
 
   it('should open menu when a more_vert icon was clicked', async () => {
     //given
-    const historyEntry = new HistoryEntry("today", [new Item(1, new ItemDescriptor('n', 1), 'c'), new Item(1, new ItemDescriptor('o', 3), 'c')], false);
+    const historyEntry = new HistoryEntry("today", [new Item(new ItemDescriptor('n', 1), 'c'), new Item(new ItemDescriptor('o', 3), 'c')], false);
     historyService.getAllEntries.and.returnValue([historyEntry]);
 
     //when
@@ -138,13 +138,13 @@ describe('HistoryListComponent', () => {
     let matMenuHarness = await loader.getHarness(MatMenuHarness);
     let items = await matMenuHarness.getItems();
     expect(await items[0].getText()).toEqual('file_copyCopy to clipboard');
-    expect(await items[1].getText()).toEqual('play_arrowContinue shopping');
+    expect(await items[1].getText()).toEqual('play_arrowContinue');
     expect(await items[2].getText()).toEqual('replayLoad again');
   });
 
   it('should copy to clipboard when a copy menu option was clicked', async () => {
     //given
-    const historyEntry = new HistoryEntry("today", [new Item(1, new ItemDescriptor('n', 1), 'c'), new Item(2, new ItemDescriptor('o', 3), 'c')], false);
+    const historyEntry = new HistoryEntry("today", [new Item(new ItemDescriptor('n', 1), 'c'), new Item(new ItemDescriptor('o', 3), 'c')], false);
     historyService.getAllEntries.and.returnValue([historyEntry]);
 
     //when

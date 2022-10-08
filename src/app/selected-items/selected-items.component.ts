@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ListService} from '../list/list.service';
 import {Item} from '../list/item.model';
 import {HistoryService} from '../history/history.service';
@@ -9,7 +9,7 @@ import {DescriptorParserService} from "../parser/descriptor-parser.service";
   templateUrl: './selected-items.component.html',
   styleUrls: ['./selected-items.component.scss']
 })
-export class SelectedItemsComponent implements OnInit, OnDestroy {
+export class SelectedItemsComponent implements OnInit {
   private items: Item[] = [];
   arrangedItems: Item[] = [];
   text: string = '';
@@ -22,33 +22,31 @@ export class SelectedItemsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.buildLinesFromState();
-  }
-
-  ngOnDestroy(): void {
-    this.historyService.addEntry(this.listService.getSelectedItems());
+    this.populateSelectedItems();
   }
 
   changeLineState(item: Item) {
     item.flipState();
     this.arrangedItems = this.arrangeItems();
-  }
-
-  private arrangeItems() {
-    return this.findNotChecked().concat(this.findChecked());
+    this.historyService.addEntry(this.items);
   }
 
   parseText() {
     this.listService.select(this.descriptorParserService.parse(this.text));
-    this.buildLinesFromState();
+    this.populateSelectedItems();
   }
 
   findChecked = () => this.items.filter((line) => line.isStateChecked());
 
   findNotChecked = () => this.items.filter((line) => !line.isStateChecked());
 
-  private buildLinesFromState = () => {
+  private arrangeItems() {
+    return this.findNotChecked().concat(this.findChecked());
+  }
+
+  private populateSelectedItems = () => {
     this.items = this.listService.getSelectedItems();
     this.arrangedItems = this.arrangeItems();
+    this.historyService.addEntry(this.items);
   };
 }

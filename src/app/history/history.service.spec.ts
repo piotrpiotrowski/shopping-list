@@ -27,11 +27,11 @@ describe('HistoryService', () => {
 
   it('should add a new list of items', () => {
     //when
-    service.addEntry([new Item(1, new ItemDescriptor('n', 1), 'c')]);
+    service.addEntry([new Item(new ItemDescriptor('n', 1), 'c')]);
 
     //then
     expect(localStorage.getItem(buildKey())).toEqual(
-      '[{"id":1,"descriptor":{"name":"n","quantity":1,"note":""},"category":"c","state":"NOT_CHECKED"}]'
+      '[{"descriptor":{"name":"n","quantity":1,"note":""},"category":"c","state":"NOT_CHECKED"}]'
     );
 
     //cleanup
@@ -40,12 +40,12 @@ describe('HistoryService', () => {
 
   it('should append to existing list of items', () => {
     //when
-    service.addEntry([new Item(1, new ItemDescriptor('n', 1), 'c')]);
-    service.addEntry([new Item(2, new ItemDescriptor('a', 2), 'c')]);
+    service.addEntry([new Item(new ItemDescriptor('n', 1), 'c')]);
+    service.addEntry([new Item(new ItemDescriptor('a', 2), 'c')]);
 
     //then
     expect(localStorage.getItem(buildKey())).toEqual(
-      '[{"id":1,"descriptor":{"name":"n","quantity":1,"note":""},"category":"c","state":"NOT_CHECKED"},{"id":2,"descriptor":{"name":"a","quantity":2,"note":""},"category":"c","state":"NOT_CHECKED"}]'
+      '[{"descriptor":{"name":"n","quantity":1,"note":""},"category":"c","state":"NOT_CHECKED"},{"descriptor":{"name":"a","quantity":2,"note":""},"category":"c","state":"NOT_CHECKED"}]'
     );
 
     //cleanup
@@ -54,12 +54,12 @@ describe('HistoryService', () => {
 
   it('should merge items with the same name', () => {
     //when
-    service.addEntry([new Item(1, new ItemDescriptor('n', 1, 'no1'), 'c')]);
-    service.addEntry([new Item(1, new ItemDescriptor('n', 2, 'no2'), 'c')]);
+    service.addEntry([new Item(new ItemDescriptor('n', 1, 'no1'), 'c')]);
+    service.addEntry([new Item(new ItemDescriptor('n', 2, 'no2'), 'c')]);
 
     //then
     expect(localStorage.getItem(buildKey())).toEqual(
-      '[{"id":1,"descriptor":{"name":"n","quantity":2,"note":"no2"},"category":"c","state":"NOT_CHECKED"}]'
+      '[{"descriptor":{"name":"n","quantity":2,"note":"no2"},"category":"c","state":"NOT_CHECKED"}]'
     );
 
     //cleanup
