@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {HistoryService} from "../history/history.service";
-import {HistoryEntry} from "../history/history.entry.model";
-import {Clipboard} from '@angular/cdk/clipboard';
+import { Component, OnInit } from '@angular/core';
+import { HistoryService } from '../history/history.service';
+import { HistoryEntry } from '../history/history.entry.model';
+import { Clipboard } from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-history-list',
@@ -9,9 +9,10 @@ import {Clipboard} from '@angular/cdk/clipboard';
   styleUrls: ['./history-list.component.scss']
 })
 export class HistoryListComponent implements OnInit {
-
-  constructor(public historyService: HistoryService, private clipboard: Clipboard) {
-  }
+  constructor(
+    public historyService: HistoryService,
+    private clipboard: Clipboard
+  ) {}
 
   entries: HistoryEntry[] = [];
 
@@ -19,7 +20,8 @@ export class HistoryListComponent implements OnInit {
     this.entries = this.historyService.getAllEntries();
   }
 
-  extractKey = (key: string) => key.replace(this.historyService.HISTORY_BASE_KEY, '');
+  extractKey = (key: string) =>
+    key.replace(this.historyService.HISTORY_BASE_KEY, '');
 
   toggle(entry: HistoryEntry) {
     entry.visible = !entry.visible;
@@ -29,12 +31,8 @@ export class HistoryListComponent implements OnInit {
     this.clipboard.copy(this.getItemsAsText(entry));
   }
 
-  addToSelected(entry: HistoryEntry) {
-
-  }
+  addToSelected(entry: HistoryEntry) {}
 
   private getItemsAsText = (entry: HistoryEntry) =>
-    entry.value
-      .map(item => item.asString())
-      .join('\n');
+    entry.value.map((item) => item.asString()).join('\n');
 }

@@ -1,8 +1,8 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {MenuComponent} from './menu.component';
-import {RouterTestingModule} from '@angular/router/testing';
-import {NO_ERRORS_SCHEMA} from '@angular/core';
+import { MenuComponent } from './menu.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('MenuComponent', () => {
   let component: MenuComponent;

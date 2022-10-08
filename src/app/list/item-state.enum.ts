@@ -1,4 +1,4 @@
 export enum ItemState {
-  NOT_CHECKED = "NOT_CHECKED",
-  CHECKED = "CHECKED"
+  NOT_CHECKED = 'NOT_CHECKED',
+  CHECKED = 'CHECKED'
 }

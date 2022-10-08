@@ -1,7 +1,7 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ListService} from "../list/list.service";
-import {Item} from "../list/item.model";
-import {HistoryService} from "../history/history.service";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ListService } from '../list/list.service';
+import { Item } from '../list/item.model';
+import { HistoryService } from '../history/history.service';
 
 @Component({
   selector: 'app-selected-items',
@@ -9,13 +9,14 @@ import {HistoryService} from "../history/history.service";
   styleUrls: ['./selected-items.component.scss']
 })
 export class SelectedItemsComponent implements OnInit, OnDestroy {
-
   private items: Item[] = [];
   arrangedItems: Item[] = [];
   text: string = '';
 
-  constructor(public listService: ListService, private historyService: HistoryService) {
-  }
+  constructor(
+    public listService: ListService,
+    private historyService: HistoryService
+  ) {}
 
   ngOnInit(): void {
     this.buildLinesFromState();
@@ -26,7 +27,7 @@ export class SelectedItemsComponent implements OnInit, OnDestroy {
   }
 
   changeLineState(item: Item) {
-    item.flipState()
+    item.flipState();
     this.arrangedItems = this.arrangeItems();
   }
 
@@ -39,13 +40,12 @@ export class SelectedItemsComponent implements OnInit, OnDestroy {
     this.buildLinesFromState();
   }
 
-  findChecked = () => this.items.filter(line => line.isStateChecked());
+  findChecked = () => this.items.filter((line) => line.isStateChecked());
 
-  findNotChecked = () => this.items.filter(line => !line.isStateChecked());
+  findNotChecked = () => this.items.filter((line) => !line.isStateChecked());
 
   private buildLinesFromState = () => {
-    this.items = this.listService
-      .getSelectedItems();
+    this.items = this.listService.getSelectedItems();
     this.arrangedItems = this.arrangeItems();
-  }
+  };
 }

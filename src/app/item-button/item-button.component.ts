@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Item} from "../list/item.model";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Item } from '../list/item.model';
 
 @Component({
   selector: 'app-item-button',
@@ -7,14 +7,12 @@ import {Item} from "../list/item.model";
   styleUrls: ['./item-button.component.scss']
 })
 export class ItemButtonComponent implements OnInit {
-
   @Input() item: Item = new Item(0, '', '');
   @Output() selected = new EventEmitter<Item>();
   addNoteVisible: boolean = false;
   noteText: string = '';
 
-  constructor() {
-  }
+  constructor() {}
 
   ngOnInit(): void {
     this.noteText = this.item.note;
@@ -26,7 +24,7 @@ export class ItemButtonComponent implements OnInit {
   }
 
   removeFromList() {
-    this.item.setZeroQuantity()
+    this.item.setZeroQuantity();
     this.selected.emit(this.item);
   }
 
@@ -45,7 +43,7 @@ export class ItemButtonComponent implements OnInit {
     if (this.item.quantity === 1) {
       return 'selected';
     }
-    return 'multi_selected'
+    return 'multi_selected';
   }
 
   saveNote(event: any) {

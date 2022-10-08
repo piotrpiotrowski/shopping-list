@@ -1,7 +1,7 @@
-import {Component, Input} from '@angular/core';
-import {Route, Router} from '@angular/router';
-import {MatSidenav} from '@angular/material/sidenav';
-import {routes} from '../app-routes';
+import { Component, Input } from '@angular/core';
+import { Route, Router } from '@angular/router';
+import { MatSidenav } from '@angular/material/sidenav';
+import { routes } from '../app-routes';
 
 @Component({
   selector: 'app-menu',
@@ -9,15 +9,12 @@ import {routes} from '../app-routes';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent {
-
   paths: string[];
-  private labels = new Map<string, string>(
-    [
-      ['', 'Build list'],
-      ['selected-items', 'Display list'],
-      ['history-list', 'Display history'],
-    ]
-  );
+  private labels = new Map<string, string>([
+    ['', 'Build list'],
+    ['selected-items', 'Display list'],
+    ['history-list', 'Display history']
+  ]);
 
   constructor(private router: Router) {
     this.paths = routes.map((route: Route) => route.path!);
@@ -26,7 +23,7 @@ export class MenuComponent {
   @Input() nav!: MatSidenav;
 
   public routeTo(path: string): any {
-    return this.router.navigateByUrl(path).then(_ => this.nav.close());
+    return this.router.navigateByUrl(path).then((_) => this.nav.close());
   }
 
   getLabel(key: string) {

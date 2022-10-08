@@ -1,8 +1,14 @@
-import {ItemState} from "./item-state.enum";
+import { ItemState } from './item-state.enum';
 
 export class Item {
-  constructor(public id: number, public name: string, public category: string, public quantity: number = 0, public note: string = '', public state: ItemState = ItemState.NOT_CHECKED) {
-  }
+  constructor(
+    public id: number,
+    public name: string,
+    public category: string,
+    public quantity: number = 0,
+    public note: string = '',
+    public state: ItemState = ItemState.NOT_CHECKED
+  ) {}
 
   public increaseQuantity() {
     this.quantity++;
@@ -12,7 +18,8 @@ export class Item {
     this.quantity = 0;
   }
 
-  asString = () => `${this.name}${this.resolveQuantityText()}${this.resolveNoteText()}`
+  asString = () =>
+    `${this.name}${this.resolveQuantityText()}${this.resolveNoteText()}`;
 
   setQuantity(quantity: number) {
     this.quantity = quantity;
@@ -23,14 +30,27 @@ export class Item {
   }
 
   flipState() {
-    this.state = this.state === ItemState.CHECKED ? ItemState.NOT_CHECKED : ItemState.CHECKED;
+    this.state =
+      this.state === ItemState.CHECKED
+        ? ItemState.NOT_CHECKED
+        : ItemState.CHECKED;
   }
 
   isStateChecked = () => this.state === ItemState.CHECKED;
 
-  private resolveNoteText = () => this.note.length === 0 ? '' : ` (${this.note})`;
+  private resolveNoteText = () =>
+    this.note.length === 0 ? '' : ` (${this.note})`;
 
-  private resolveQuantityText = () => this.quantity == 1 ? '' : ` ${this.quantity}x`;
+  private resolveQuantityText = () =>
+    this.quantity == 1 ? '' : ` ${this.quantity}x`;
 
-  merge = (item: Item) => new Item(this.id, this.name, this.category, this.quantity + item.quantity, `${this.note}, ${item.note}`, this.state);
+  merge = (item: Item) =>
+    new Item(
+      this.id,
+      this.name,
+      this.category,
+      this.quantity + item.quantity,
+      `${this.note}, ${item.note}`,
+      this.state
+    );
 }
