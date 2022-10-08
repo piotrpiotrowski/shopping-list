@@ -2,13 +2,13 @@
   <div *ngFor="let entry of entries">
     <div class="entry-key">
       <button mat-list-item (click)="toggle(entry)">
-        {{extractKey(entry.key)}}
+        {{ extractKey(entry.key) }}
       </button>
       <mat-icon class="copy-icon" (click)="copy(entry)">file_copy</mat-icon>
       <mat-icon class="add-icon" (click)="addToSelected(entry)">add</mat-icon>
     </div>
     <div *ngIf="entry.visible" class="entry-value">
-      <div *ngFor="let item of entry.value">{{item.asString()}}</div>
+      <div *ngFor="let item of entry.value">{{ item.asString() }}</div>
     </div>
   </div>
 </mat-action-list>

@@ -1,3 +1,5 @@
 <mat-action-list class="menu-list">
-  <button *ngFor="let path of paths" mat-list-item (click)="routeTo(path)">{{getLabel(path)}}</button>
+  <button *ngFor="let path of paths" mat-list-item (click)="routeTo(path)">
+    {{ getLabel(path) }}
+  </button>
 </mat-action-list>

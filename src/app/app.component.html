@@ -9,10 +9,13 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar class="content-toolbar">
-      <button mat-icon-button (click)="sidenav.toggle()" [disabled]="sidenav.opened">
+      <button
+        mat-icon-button
+        (click)="sidenav.toggle()"
+        [disabled]="sidenav.opened">
         <mat-icon>menu</mat-icon>
       </button>
-      <span class="title">{{title}}</span>
+      <span class="title">{{ title }}</span>
     </mat-toolbar>
     <div class="router-outlet-content">
       <router-outlet></router-outlet>

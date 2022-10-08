@@ -1,19 +1,30 @@
 <mat-accordion>
   <mat-expansion-panel hideToggle *ngFor="let itemsGroup of itemsGroups" #panel>
-    <mat-expansion-panel-header [ngClass]="panel.expanded ? '' : itemsGroup.name">
-      <mat-panel-title class="{{panel.expanded ? 'title-expanded' : 'title-collapsed'}}">
-        {{itemsGroup.name.toUpperCase()}}
-        <span *ngIf="itemsGroup.countSelected()>0" class="counter">({{itemsGroup.countSelected()}})</span>
+    <mat-expansion-panel-header
+      [ngClass]="panel.expanded ? '' : itemsGroup.name">
+      <mat-panel-title
+        class="{{ panel.expanded ? 'title-expanded' : 'title-collapsed' }}">
+        {{ itemsGroup.name.toUpperCase() }}
+        <span *ngIf="itemsGroup.countSelected() > 0" class="counter"
+          >({{ itemsGroup.countSelected() }})</span
+        >
       </mat-panel-title>
       <mat-panel-description></mat-panel-description>
     </mat-expansion-panel-header>
     <div class="list">
-      <app-item-button *ngFor="let item of itemsGroup.items" [item]="item" (selected)="onSelection($event)"></app-item-button>
+      <app-item-button
+        *ngFor="let item of itemsGroup.items"
+        [item]="item"
+        (selected)="onSelection($event)"></app-item-button>
     </div>
-    <div *ngIf="itemsGroup.name === itemsGroups[itemsGroups.length -1].name">
+    <div *ngIf="itemsGroup.name === itemsGroups[itemsGroups.length - 1].name">
       <mat-form-field style="width: 100%">
         <mat-label>Add item</mat-label>
-        <input matInput (change)="addToUnknown(input)" #input enterkeyhint="done">
+        <input
+          matInput
+          (change)="addToUnknown(input)"
+          #input
+          enterkeyhint="done" />
       </mat-form-field>
     </div>
   </mat-expansion-panel>

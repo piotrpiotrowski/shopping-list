@@ -1,10 +1,19 @@
 <div class="item">
-  <button mat-flat-button (click)="addToList()" [ngClass]="['item-button', item.category, resolveStateClass()]">
-    {{item.name}}
+  <button
+    mat-flat-button
+    (click)="addToList()"
+    [ngClass]="['item-button', item.category, resolveStateClass()]">
+    {{ item.name }}
     <mat-icon *ngIf="isStateSelected()" aria-hidden="true">done</mat-icon>
-    <span *ngIf="isStateMultiSelected()">{{item.quantity}}x</span>
+    <span *ngIf="isStateMultiSelected()">{{ item.quantity }}x</span>
   </button>
-  <mat-icon *ngIf="item.quantity > 0" aria-hidden="true" [ngClass]="['item-actions']" [matMenuTriggerFor]="menu">more_vert</mat-icon>
+  <mat-icon
+    *ngIf="item.quantity > 0"
+    aria-hidden="true"
+    [ngClass]="['item-actions']"
+    [matMenuTriggerFor]="menu"
+    >more_vert</mat-icon
+  >
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="removeFromList()">
       <mat-icon>remove_shopping_cart</mat-icon>
@@ -18,5 +27,9 @@
 </div>
 <mat-form-field *ngIf="addNoteVisible" class="item-note" appearance="fill">
   <mat-label>Add note</mat-label>
-  <input matInput [(ngModel)]="noteText" (keyup)="saveNote($event)" enterkeyhint="done">
+  <input
+    matInput
+    [(ngModel)]="noteText"
+    (keyup)="saveNote($event)"
+    enterkeyhint="done" />
 </mat-form-field>
