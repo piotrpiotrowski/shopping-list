@@ -1,5 +1,5 @@
-import {Item} from '../list/item.model';
-import {HistoryEntry} from './history.entry.model';
+import { Item } from '../list/item.model';
+import { HistoryEntry } from './history.entry.model';
 
 describe('HistoryEntry', () => {
   it('should ignore empty list', () => {

@@ -23,7 +23,7 @@ export class MenuComponent {
   @Input() nav!: MatSidenav;
 
   public routeTo(path: string): any {
-    return this.router.navigateByUrl(path).then((_) => this.nav.close());
+    return this.router.navigateByUrl(path).then(() => this.nav.close());
   }
 
   getLabel(key: string) {

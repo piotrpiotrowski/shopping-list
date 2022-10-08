@@ -31,7 +31,9 @@ export class HistoryListComponent implements OnInit {
     this.clipboard.copy(this.getItemsAsText(entry));
   }
 
-  addToSelected(entry: HistoryEntry) {}
+  addToSelected(entry: HistoryEntry) {
+    console.log(entry);
+  }
 
   private getItemsAsText = (entry: HistoryEntry) =>
     entry.value.map((item) => item.asString()).join('\n');

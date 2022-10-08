@@ -3,7 +3,25 @@
   "ignorePatterns": [
     "projects/**/*"
   ],
+  "globals": {
+    "localStorage": true,
+    "fetch": true,
+    "console": true
+  },
   "overrides": [
+    {
+      "env": {
+        "jasmine": true
+      },
+      "files": [
+        "**/*.spec.ts"
+      ],
+      "extends": [
+      ],
+      "rules": {
+
+      }
+    },
     {
       "files": [
         "*.ts"
@@ -17,8 +35,7 @@
       "extends": [
         "eslint:recommended",
         "plugin:@angular-eslint/recommended",
-        "plugin:@angular-eslint/template/process-inline-templates",
-        "plugin:prettier/recommended"
+        "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
         "@angular-eslint/directive-selector": [
@@ -37,19 +54,10 @@
             "style": "kebab-case"
           }
         ],
-        "sort-imports": [
+        "@typescript-eslint/no-unused-vars": [
           "error",
           {
-            "ignoreCase": false,
-            "ignoreDeclarationSort": false,
-            "ignoreMemberSort": false,
-            "memberSyntaxSortOrder": [
-              "none",
-              "all",
-              "multiple",
-              "single"
-            ],
-            "allowSeparatedGroups": false
+            "argsIgnorePattern": "_"
           }
         ]
       }
