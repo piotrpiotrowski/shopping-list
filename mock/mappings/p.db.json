@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/api/p.db.csv"
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "db.csv",
+    "headers": {
+      "Content-Type": "text/csv; charset=UTF-8"
+    }
+  }
+}

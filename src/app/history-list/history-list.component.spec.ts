@@ -138,7 +138,7 @@ describe('HistoryListComponent', () => {
     let matMenuHarness = await loader.getHarness(MatMenuHarness);
     let items = await matMenuHarness.getItems();
     expect(await items[0].getText()).toEqual('file_copyCopy to clipboard');
-    expect(await items[1].getText()).toEqual('play_arrowContinue');
+    expect(await items[1].getText()).toEqual('fast_forwardContinue');
     expect(await items[2].getText()).toEqual('replayLoad again');
   });
 

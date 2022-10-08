@@ -11,13 +11,13 @@ import { routes } from '../app-routes';
 export class MenuComponent {
   paths: string[];
   private labels = new Map<string, string>([
-    ['', 'Build list'],
+    [':userId', 'Build list'],
     ['selected-items', 'Display list'],
     ['history-list', 'Display history']
   ]);
 
   constructor(private router: Router) {
-    this.paths = routes.map((route: Route) => route.path!);
+    this.paths = routes.splice(1).map((route: Route) => route.path!);
   }
 
   @Input() nav!: MatSidenav;

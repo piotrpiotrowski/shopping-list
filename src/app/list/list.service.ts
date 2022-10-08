@@ -19,7 +19,7 @@ export class ListService {
   getSelectedItems = () =>
     this.itemsGroups.flatMap((itemsGroup) => itemsGroup.filterSelected());
 
-  loadItemsGroups(): Observable<ItemsGroup[]> {
+  loadItemsGroups(userId: string): Observable<ItemsGroup[]> {
     if (this.itemsGroups.length > 0) {
       return of(this.itemsGroups);
     }
@@ -28,7 +28,7 @@ export class ListService {
       'text/csv; charset=utf-8'
     );
     return this.http
-      .get('/api/db.csv', {headers, responseType: 'text'})
+      .get(`/api/${userId}.db.csv`, {headers, responseType: 'text'})
       .pipe(mergeMap((text) => from(text.split('\n'))))
       .pipe(filter((row) => row.length > 0))
       .pipe(map((row) => this.convertToItem(row)))
