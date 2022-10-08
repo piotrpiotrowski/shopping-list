@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Item } from '../list/item.model';
+import {ItemDescriptor} from "../list/item-descriptor.model";
 
 @Component({
   selector: 'app-item-button',
@@ -7,7 +8,7 @@ import { Item } from '../list/item.model';
   styleUrls: ['./item-button.component.scss']
 })
 export class ItemButtonComponent implements OnInit {
-  @Input() item: Item = new Item(0, '', '');
+  @Input() item: Item = new Item(0, new ItemDescriptor('', 0), '');
   @Output() selected = new EventEmitter<Item>();
   addNoteVisible: boolean = false;
   noteText: string = '';
@@ -15,7 +16,7 @@ export class ItemButtonComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.noteText = this.item.note;
+    this.noteText = this.item.descriptor.note;
   }
 
   addToList() {
@@ -29,18 +30,18 @@ export class ItemButtonComponent implements OnInit {
   }
 
   isStateSelected() {
-    return this.item.quantity === 1;
+    return this.item.descriptor.quantity === 1;
   }
 
   isStateMultiSelected() {
-    return this.item.quantity > 1;
+    return this.item.descriptor.quantity > 1;
   }
 
   resolveStateClass() {
-    if (this.item.quantity === 0) {
+    if (this.item.descriptor.quantity === 0) {
       return '';
     }
-    if (this.item.quantity === 1) {
+    if (this.item.descriptor.quantity === 1) {
       return 'selected';
     }
     return 'multi_selected';

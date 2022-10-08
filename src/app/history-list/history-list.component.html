@@ -1,14 +1,35 @@
 <mat-action-list>
-  <div *ngFor="let entry of entries">
+  <div *ngFor="let entry of entries" class="entry">
     <div class="entry-key">
       <button mat-list-item (click)="toggle(entry)">
         {{ extractKey(entry.key) }}
       </button>
-      <mat-icon class="copy-icon" (click)="copy(entry)">file_copy</mat-icon>
-      <mat-icon class="add-icon" (click)="addToSelected(entry)">add</mat-icon>
+      <mat-icon
+        *ngIf="entry.visible"
+        aria-hidden="true"
+        [ngClass]="['entry-actions']"
+        [matMenuTriggerFor]="menu">
+        more_vert
+      </mat-icon>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="copyToClipboard(entry)">
+          <mat-icon>file_copy</mat-icon>
+          <span>Copy to clipboard</span>
+        </button>
+        <button mat-menu-item (click)="addNotChecked(entry)">
+          <mat-icon>play_arrow</mat-icon>
+          <span>Continue shopping</span>
+        </button>
+        <button mat-menu-item (click)="addAll(entry)">
+          <mat-icon>replay</mat-icon>
+          <span>Load again</span>
+        </button>
+      </mat-menu>
     </div>
     <div *ngIf="entry.visible" class="entry-value">
-      <div *ngFor="let item of entry.value">{{ item.asString() }}</div>
+      <div *ngFor="let item of entry.value" class="item-line">
+        {{ item.asString() }}
+      </div>
     </div>
   </div>
 </mat-action-list>

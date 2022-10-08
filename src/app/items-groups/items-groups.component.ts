@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ItemsGroup } from './items-group.model';
-import { Observable, of } from 'rxjs';
-import { Item } from '../list/item.model';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ItemsGroup} from './items-group.model';
+import {Observable, of} from 'rxjs';
+import {Item} from '../list/item.model';
+import {ItemDescriptor} from "../list/item-descriptor.model";
 
 @Component({
   selector: 'app-items-groups',
@@ -14,7 +15,8 @@ export class ItemsGroupsComponent implements OnInit {
 
   itemsGroups: ItemsGroup[] = [];
 
-  constructor() {}
+  constructor() {
+  }
 
   ngOnInit(): void {
     this.itemsGroupsSource.subscribe({
@@ -31,9 +33,8 @@ export class ItemsGroupsComponent implements OnInit {
     this.itemsGroups[this.itemsGroups.length - 1].items.push(
       new Item(
         0,
-        input.value,
-        this.itemsGroups[this.itemsGroups.length - 1].name,
-        1
+        new ItemDescriptor(input.value, 1),
+        this.itemsGroups[this.itemsGroups.length - 1].name
       )
     );
     input.value = '';

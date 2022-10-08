@@ -3,17 +3,17 @@
     mat-flat-button
     (click)="addToList()"
     [ngClass]="['item-button', item.category, resolveStateClass()]">
-    {{ item.name }}
+    {{ item.descriptor.name }}
     <mat-icon *ngIf="isStateSelected()" aria-hidden="true">done</mat-icon>
-    <span *ngIf="isStateMultiSelected()">{{ item.quantity }}x</span>
+    <span *ngIf="isStateMultiSelected()">{{ item.descriptor.quantity }}x</span>
   </button>
   <mat-icon
-    *ngIf="item.quantity > 0"
+    *ngIf="item.descriptor.quantity > 0"
     aria-hidden="true"
     [ngClass]="['item-actions']"
-    [matMenuTriggerFor]="menu"
-    >more_vert</mat-icon
-  >
+    [matMenuTriggerFor]="menu">
+    more_vert
+  </mat-icon>
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="removeFromList()">
       <mat-icon>remove_shopping_cart</mat-icon>

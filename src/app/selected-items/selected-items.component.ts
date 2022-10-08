@@ -1,7 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ListService } from '../list/list.service';
-import { Item } from '../list/item.model';
-import { HistoryService } from '../history/history.service';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ListService} from '../list/list.service';
+import {Item} from '../list/item.model';
+import {HistoryService} from '../history/history.service';
+import {DescriptorParserService} from "../parser/descriptor-parser.service";
 
 @Component({
   selector: 'app-selected-items',
@@ -15,8 +16,10 @@ export class SelectedItemsComponent implements OnInit, OnDestroy {
 
   constructor(
     public listService: ListService,
-    private historyService: HistoryService
-  ) {}
+    private historyService: HistoryService,
+    private descriptorParserService: DescriptorParserService
+  ) {
+  }
 
   ngOnInit(): void {
     this.buildLinesFromState();
@@ -36,7 +39,7 @@ export class SelectedItemsComponent implements OnInit, OnDestroy {
   }
 
   parseText() {
-    this.listService.selectFromText(this.text);
+    this.listService.select(this.descriptorParserService.parse(this.text));
     this.buildLinesFromState();
   }
 

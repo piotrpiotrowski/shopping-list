@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
-import { Item } from '../list/item.model';
-import { HistoryEntry } from './history.entry.model';
+import {Injectable} from '@angular/core';
+import {Item} from '../list/item.model';
+import {HistoryEntry} from './history.entry.model';
+import {ItemDescriptor} from "../list/item-descriptor.model";
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,8 @@ import { HistoryEntry } from './history.entry.model';
 export class HistoryService {
   public readonly HISTORY_BASE_KEY = 'shopping_history';
 
-  constructor() {}
+  constructor() {
+  }
 
   addEntry(items: Item[]) {
     if (items.length === 0) {
@@ -46,10 +48,8 @@ export class HistoryService {
       (object) =>
         new Item(
           object.id,
-          object.name,
+          new ItemDescriptor(object.descriptor.name, object.descriptor.quantity, object.descriptor.note),
           object.category,
-          object.quantity,
-          object.note,
           object.state
         )
     );

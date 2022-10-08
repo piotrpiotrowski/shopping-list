@@ -1,20 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Item } from './item.model';
-import { Clipboard } from '@angular/cdk/clipboard';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {
-  Observable,
-  filter,
-  from,
-  groupBy,
-  map,
-  mergeMap,
-  of,
-  tap,
-  toArray,
-  zip
-} from 'rxjs';
-import { ItemsGroup } from '../items-groups/items-group.model';
+import {Injectable} from '@angular/core';
+import {Item} from './item.model';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {filter, from, groupBy, map, mergeMap, Observable, of, tap, toArray, zip} from 'rxjs';
+import {ItemsGroup} from '../items-groups/items-group.model';
+import {ItemDescriptor} from "./item-descriptor.model";
 
 @Injectable({
   providedIn: 'root'
@@ -23,17 +12,12 @@ export class ListService {
   private itemsGroups: ItemsGroup[] = [];
 
   private readonly UNKNOWN = 'nieznane';
-  private readonly QUANTITY_EXTRACTION_REGEXP = / (?<quantity>[0-9]+)x/g;
 
-  constructor(private clipboard: Clipboard, private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   getSelectedItems = () =>
     this.itemsGroups.flatMap((itemsGroup) => itemsGroup.filterSelected());
-
-  append() {
-    const textInLines = this.getItemsAsText();
-    this.clipboard.copy(textInLines);
-  }
 
   loadItemsGroups(): Observable<ItemsGroup[]> {
     if (this.itemsGroups.length > 0) {
@@ -44,11 +28,11 @@ export class ListService {
       'text/csv; charset=utf-8'
     );
     return this.http
-      .get('/api/db.csv', { headers, responseType: 'text' })
+      .get('/api/db.csv', {headers, responseType: 'text'})
       .pipe(mergeMap((text) => from(text.split('\n'))))
       .pipe(filter((row) => row.length > 0))
       .pipe(map((row, index) => this.convertToItem(row, index + 1)))
-      .pipe(groupBy((item) => item.category, { element: (p) => p }))
+      .pipe(groupBy((item) => item.category, {element: (p) => p}))
       .pipe(mergeMap((group) => zip(of(group.key), group.pipe(toArray()))))
       .pipe(map((entry) => new ItemsGroup(entry[0], this.sortByName(entry[1]))))
       .pipe(toArray())
@@ -59,32 +43,23 @@ export class ListService {
       .pipe(tap((itemsGroups) => (this.itemsGroups = itemsGroups)));
   }
 
-  selectFromText(text: string) {
-    text
-      .trim()
-      .split('\n')
-      .filter((value) => value.length > 0)
-      .map((line) => this.extractAttributes(line))
-      .forEach((attributes) => this.selectBy(attributes));
+  select(itemsDescriptors: ItemDescriptor[]) {
+    itemsDescriptors.forEach((attributes) => this.selectBy(attributes));
   }
 
-  private getItemsAsText = () =>
+  public getItemsAsText = () =>
     this.getSelectedItems()
       .map((item) => item.asString())
       .join('\n');
 
-  private selectBy(attributes: {
-    quantity: number;
-    name: string;
-    note: string;
-  }) {
-    const item = this.findItem(attributes.name);
+  private selectBy(itemDescriptor: ItemDescriptor) {
+    const item = this.findItem(itemDescriptor.name);
     if (item) {
-      item.setQuantity(attributes.quantity);
-      item.addNote(attributes.note);
+      item.setQuantity(itemDescriptor.quantity);
+      item.addNote(itemDescriptor.note);
     } else {
       this.getGroupUnknown().items.push(
-        new Item(0, attributes.name, this.UNKNOWN, attributes.quantity)
+        new Item(0, itemDescriptor, this.UNKNOWN)
       );
     }
   }
@@ -99,34 +74,16 @@ export class ListService {
     return this.itemsGroups[this.itemsGroups.length - 1];
   }
 
-  private extractAttributes(line: string) {
-    const quantity = this.extractQuantity(line);
-    const note = this.extractNote(line);
-    const name = line.replace(` ${quantity}x`, '').replace(` (${note})`, '');
-    return { name: name, quantity: quantity, note: note };
-  }
-
   private convertToItem(row: string, id: number) {
     const columns = row.split(',');
-    return new Item(id, columns[0], columns[1].trimEnd());
+    return new Item(id, new ItemDescriptor(columns[0], 0), columns[1].trimEnd());
   }
 
   private sortByName(items: Item[]) {
-    return items.sort((a, b) => a.name.localeCompare(b.name));
+    return items.sort((a, b) => a.descriptor.name.localeCompare(b.descriptor.name));
   }
 
   private sortByCategory(itemsGroups: ItemsGroup[]) {
     return itemsGroups.sort((a, b) => a.name.localeCompare(b.name));
-  }
-
-  private extractQuantity(line: string) {
-    const matches = this.QUANTITY_EXTRACTION_REGEXP.exec(line);
-    return matches && matches[1] ? Number(matches[1]) : 1;
-  }
-
-  private extractNote(line: string) {
-    const noteBegin = line.indexOf('(');
-    const noteEnd = line.indexOf(')');
-    return noteBegin === -1 ? '' : line.substring(noteBegin + 1, noteEnd);
   }
 }
