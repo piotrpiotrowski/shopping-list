@@ -18,14 +18,10 @@ export class HistoryService {
     }
     let key = this.buildKey(new Date());
     if (localStorage.getItem(key)) {
-      localStorage.setItem(key, JSON.stringify(this.merge(key, items)));
+      this.appendToExistingEntry(key, items);
     } else {
       localStorage.setItem(key, JSON.stringify(items));
     }
-  }
-
-  private merge(key: string, items: Item[]) {
-    return this.getByKey(key).value.concat(items);
   }
 
   getAllEntries = () =>
@@ -34,6 +30,12 @@ export class HistoryService {
       .map(date => this.buildKey(date))
       .filter(key => localStorage.getItem(key))
       .map(key => this.getByKey(key));
+
+  private appendToExistingEntry(key: string, items: Item[]) {
+    let historyEntry = this.getByKey(key)
+      .appendItems(items);
+    localStorage.setItem(historyEntry.key, JSON.stringify(historyEntry.value));
+  }
 
   private getByKey = (key: string) => new HistoryEntry(key, this.toItems(localStorage.getItem(key) as string), false)
 

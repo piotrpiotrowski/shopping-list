@@ -31,4 +31,6 @@ export class Item {
   private resolveNoteText = () => this.note.length === 0 ? '' : ` (${this.note})`;
 
   private resolveQuantityText = () => this.quantity == 1 ? '' : ` ${this.quantity}x`;
+
+  merge = (item: Item) => new Item(this.id, this.name, this.category, this.quantity + item.quantity, `${this.note}, ${item.note}`, this.state);
 }
