@@ -5,6 +5,7 @@ import {Clipboard} from "@angular/cdk/clipboard";
 import {HistoryService} from "../history/history.service";
 import {ActivatedRoute} from "@angular/router";
 import {map, NEVER, Observable, switchMap} from "rxjs";
+import {UserService} from "../user/user.service";
 
 @Component({
   selector: 'app-home',
@@ -17,16 +18,13 @@ export class HomeComponent implements OnInit {
   constructor(public listService: ListService,
               private clipboard: Clipboard,
               private historyService: HistoryService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private userService: UserService) {
   }
-
-  private readonly DEFAULT_USER = 'p';
-  private readonly KNOWN_USERS = [this.DEFAULT_USER, 'm'];
 
   ngOnInit(): void {
     this.itemsGroupsSource = this.route.paramMap
-      .pipe(map(params => params.get('userId') || this.DEFAULT_USER))
-      .pipe(map(userId => this.KNOWN_USERS.includes(userId) ? userId : this.DEFAULT_USER))
+      .pipe(map(params => this.userService.resolveUser(params)))
       .pipe(switchMap(userId => this.listService.loadItemsGroups(userId)));
   }
 
