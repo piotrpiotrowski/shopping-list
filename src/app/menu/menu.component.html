@@ -1,5 +1,5 @@
 <mat-action-list class="menu-list">
-  <button *ngFor="let path of paths" mat-list-item (click)="routeTo(path[0])">
+  <button *ngFor="let path of paths" mat-list-item (click)="routeTo(path[0])" [ngClass]="{'selected-menu-item': isSelected(path[0])}">
     {{ path[1] }}
   </button>
 </mat-action-list>

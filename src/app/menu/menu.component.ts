@@ -23,4 +23,6 @@ export class MenuComponent {
   public routeTo(path: string): any {
     return this.router.navigateByUrl(`${path}/${this.userService.getUserId()}`).then(() => this.nav.close());
   }
+
+  isSelected = (path: string) => document.URL.slice(document.URL.lastIndexOf('#') + 1, document.URL.lastIndexOf('/')).replace('/', '') === path;
 }
