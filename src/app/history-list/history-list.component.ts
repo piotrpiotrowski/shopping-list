@@ -5,6 +5,7 @@ import {Clipboard} from '@angular/cdk/clipboard';
 import {ListService} from "../list/list.service";
 import {ItemState} from "../list/item-state.enum";
 import {Item} from "../list/item.model";
+import {LoaderService} from "../loader.service";
 
 @Component({
   selector: 'app-history-list',
@@ -15,14 +16,16 @@ export class HistoryListComponent implements OnInit {
   constructor(
     public historyService: HistoryService,
     private clipboard: Clipboard,
-    private listService: ListService
+    private listService: ListService,
+    private loaderService: LoaderService
   ) {
   }
 
   entries: HistoryEntry[] = [];
 
   ngOnInit(): void {
-    this.entries = this.historyService.getAllEntries();
+    this.loaderService.load()
+      .subscribe(() => this.entries = this.historyService.getAllEntries());
   }
 
   extractKey = (key: string) =>
@@ -33,7 +36,7 @@ export class HistoryListComponent implements OnInit {
   }
 
   copyToClipboard(entry: HistoryEntry) {
-    this.clipboard.copy(this.getItemsAsText(entry));
+    this.clipboard.copy(entry.getItemsAsText());
   }
 
   addNotChecked(entry: HistoryEntry) {
@@ -47,7 +50,4 @@ export class HistoryListComponent implements OnInit {
   }
 
   private toItemsDescriptors = (items: Item[]) => items.map(value => value.descriptor);
-
-  private getItemsAsText = (entry: HistoryEntry) =>
-    entry.value.map((item) => item.asString()).join('\n');
 }

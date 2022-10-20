@@ -13,7 +13,10 @@ import {MatMenuHarness} from "@angular/material/menu/testing";
 import {HarnessLoader} from "@angular/cdk/testing";
 import {TestbedHarnessEnvironment} from "@angular/cdk/testing/testbed";
 import {ItemDescriptor} from "../list/item-descriptor.model";
-import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {LoaderService} from "../loader.service";
+import {of} from "rxjs";
+import {ItemsGroup} from "../items-groups/items-group.model";
+import {ListService} from "../list/list.service";
 
 describe('HistoryListComponent', () => {
 
@@ -21,18 +24,25 @@ describe('HistoryListComponent', () => {
   let clipboard: any;
   let fixture: ComponentFixture<HistoryListComponent>;
   let loader: HarnessLoader;
+  let loaderService: any;
+  let listService: any;
 
   beforeEach(async () => {
     historyService = jasmine.createSpyObj('HistoryService', ['getAllEntries', 'addEntry']);
     clipboard = jasmine.createSpyObj('Clipboard', ['copy']);
+    loaderService = jasmine.createSpyObj('LoaderService', ['load']);
+    listService = jasmine.createSpyObj('ListService', ['select']);
 
+    loaderService.load.and.returnValue(of([new ItemsGroup('owoce', [new Item(new ItemDescriptor('jabłko', 0), 'owoce')])]));
     await TestBed.configureTestingModule({
       declarations: [HistoryListComponent],
-      imports: [MatMenuModule, NoopAnimationsModule, HttpClientTestingModule],
+      imports: [MatMenuModule, NoopAnimationsModule],
       schemas: [NO_ERRORS_SCHEMA],
       providers: [
         {provide: HistoryService, useValue: historyService},
-        {provide: Clipboard, useValue: clipboard}
+        {provide: Clipboard, useValue: clipboard},
+        {provide: LoaderService, useValue: loaderService},
+        {provide: ListService, useValue: listService}
       ]
     }).compileComponents();
 

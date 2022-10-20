@@ -1,14 +1,12 @@
 import {TestBed} from '@angular/core/testing';
 
 import {DescriptorParserService} from './descriptor-parser.service';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('DescriptorParser', () => {
   let service: DescriptorParserService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule]
     });
     service = TestBed.inject(DescriptorParserService);
   });

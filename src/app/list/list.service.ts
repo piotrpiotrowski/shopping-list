@@ -47,6 +47,10 @@ export class ListService {
     itemsDescriptors.forEach((attributes) => this.selectBy(attributes));
   }
 
+  unselectAll() {
+    this.itemsGroups.forEach(group => group.unselectItems());
+  }
+
   public getItemsAsText = () =>
     this.getSelectedItems()
       .map((item) => item.asString())

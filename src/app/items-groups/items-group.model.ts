@@ -15,4 +15,8 @@ export class ItemsGroup {
   }
 
   findItem = (line: string) => this.items.find((item) => item.descriptor.name === line);
+
+  unselectItems() {
+    this.items.forEach(item => item.setZeroQuantity());
+  }
 }

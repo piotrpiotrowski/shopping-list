@@ -16,4 +16,8 @@ export class HistoryEntry {
     );
     return new HistoryEntry(this.key, Array.from(itemsMap.values()), false);
   }
+
+  getItemsAsText = () =>
+    this.value.map((item) => item.asString()).join('\n');
+
 }

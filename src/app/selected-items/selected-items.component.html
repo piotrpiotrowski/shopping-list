@@ -1,5 +1,5 @@
 <mat-form-field
-  *ngIf="listService.getSelectedItems().length === 0 && text.length === 0"
+  *ngIf="isModeEdit()"
   appearance="fill"
   class="landing-input">
   <textarea
@@ -8,10 +8,10 @@
     cdkTextareaAutosize
     cdkAutosizeMinRows="5"
     cdkAutosizeMaxRows="5"
-    [(ngModel)]="text"
-    (ngModelChange)="parseText()"></textarea>
+    [(ngModel)]="text">
+  </textarea>
 </mat-form-field>
-<mat-selection-list [multiple]="false">
+<mat-selection-list [multiple]="false" *ngIf="isModeView()">
   <mat-list-option
     *ngFor="let item of arrangedItems"
     (click)="changeLineState(item)"
@@ -25,3 +25,5 @@
     </div>
   </mat-list-option>
 </mat-selection-list>
+<button *ngIf="isModeView()" mat-stroked-button color="primary" class="edit-button" (click)="openEditMode()">Edit</button>
+<button *ngIf="isModeEdit()" mat-stroked-button color="primary" class="edit-button" (click)="saveChanges()">Save</button>
