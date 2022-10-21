@@ -37,6 +37,7 @@ export class SelectedItemsComponent implements OnInit {
     this.arrangedItems = this.arrangeItems();
     this.historyService.addEntry(this.items);
   }
+
   findChecked = () => this.items.filter((line) => line.isStateChecked());
 
   findNotChecked = () => this.items.filter((line) => !line.isStateChecked());
@@ -56,6 +57,8 @@ export class SelectedItemsComponent implements OnInit {
     this.listService.select(this.descriptorParserService.parse(this.text));
     this.populateSelectedItems();
   }
+
+  calculateNumberOfRows = () => Math.max(5, this.text.split('\n').length);
 
   private initView() {
     this.populateSelectedItems();

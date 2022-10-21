@@ -6,8 +6,8 @@
     id="landing"
     matInput
     cdkTextareaAutosize
-    cdkAutosizeMinRows="5"
-    cdkAutosizeMaxRows="5"
+    cdkAutosizeMinRows="{{calculateNumberOfRows()}}"
+    cdkAutosizeMaxRows="{{calculateNumberOfRows()}}"
     [(ngModel)]="text">
   </textarea>
 </mat-form-field>
@@ -25,5 +25,5 @@
     </div>
   </mat-list-option>
 </mat-selection-list>
-<button *ngIf="isModeView()" mat-stroked-button color="primary" class="edit-button" (click)="openEditMode()">Edit</button>
-<button *ngIf="isModeEdit()" mat-stroked-button color="primary" class="edit-button" (click)="saveChanges()">Save</button>
+<button *ngIf="isModeView()" mat-stroked-button class="edit-button" (click)="openEditMode()">Edit</button>
+<button *ngIf="isModeEdit()" mat-stroked-button class="save-button" (click)="saveChanges()">Save</button>
