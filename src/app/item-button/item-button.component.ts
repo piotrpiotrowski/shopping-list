@@ -9,7 +9,7 @@ import {ItemDescriptor} from "../list/item-descriptor.model";
 })
 export class ItemButtonComponent implements OnInit {
   @Input() item: Item = new Item(new ItemDescriptor('', 0), '');
-  @Output() selected = new EventEmitter<Item>();
+  @Output() updated = new EventEmitter<Item>();
   addNoteVisible: boolean = false;
   noteText: string = '';
 
@@ -27,7 +27,7 @@ export class ItemButtonComponent implements OnInit {
 
   removeFromList() {
     this.item.setZeroQuantity();
-    this.selected.emit(this.item);
+    this.emitEvent();
   }
 
   isStateSelected() {
@@ -61,6 +61,6 @@ export class ItemButtonComponent implements OnInit {
   }
 
   private emitEvent() {
-    this.selected.emit(this.item);
+    this.updated.emit(this.item);
   }
 }

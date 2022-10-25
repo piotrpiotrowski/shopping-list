@@ -6,7 +6,7 @@ import {ItemDescriptor} from "../list/item-descriptor.model";
 })
 export class DescriptorParserService {
 
-  private readonly QUANTITY_EXTRACTION_REGEXP = / (?<quantity>[0-9]+)x/g;
+  private readonly QUANTITY_EXTRACTION_REGEXP = / (?<quantity>[0-9]+)x/;
 
   parse = (text: string): ItemDescriptor[] =>
     text.trim()
@@ -22,7 +22,7 @@ export class DescriptorParserService {
   }
 
   private extractQuantity(line: string) {
-    const matches = this.QUANTITY_EXTRACTION_REGEXP.exec(line);
+    const matches = line.match(this.QUANTITY_EXTRACTION_REGEXP)
     return matches && matches[1] ? Number(matches[1]) : 1;
   }
 

@@ -108,4 +108,20 @@ describe('DescriptorParser', () => {
     expect(itemsDescriptors[0].quantity).toEqual(5);
     expect(itemsDescriptors[0].note).toEqual('bio');
   });
+
+  it('should always parse the same text identically', () => {
+    //given
+    const text = 'Banany 5x';
+
+    //when
+    const itemsDescriptors1 = service.parse(text);
+    const itemsDescriptors2 = service.parse(text);
+
+    //then
+    expect(itemsDescriptors1.length).toEqual(1);
+    expect(itemsDescriptors2.length).toEqual(1);
+    expect(itemsDescriptors1[0].name).toEqual(itemsDescriptors2[0].name);
+    expect(itemsDescriptors1[0].quantity).toEqual(itemsDescriptors2[0].quantity);
+    expect(itemsDescriptors1[0].note).toEqual(itemsDescriptors2[0].note);
+  });
 });

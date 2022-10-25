@@ -11,7 +11,7 @@ import {ItemDescriptor} from "../list/item-descriptor.model";
 })
 export class ItemsGroupsComponent implements OnInit {
   @Input() itemsGroupsSource: Observable<ItemsGroup[]> = of([]);
-  @Output() selected = new EventEmitter<Item>();
+  @Output() updated = new EventEmitter<Item>();
 
   itemsGroups: ItemsGroup[] = [];
 
@@ -25,17 +25,21 @@ export class ItemsGroupsComponent implements OnInit {
     });
   }
 
-  onSelection(item: Item) {
-    this.selected.emit(item);
+  onUpdate(item: Item) {
+    this.updated.emit(item);
   }
 
   addToUnknown(input: HTMLInputElement) {
-    this.itemsGroups[this.itemsGroups.length - 1].items.push(
-      new Item(
-        new ItemDescriptor(input.value, 1),
-        this.itemsGroups[this.itemsGroups.length - 1].name
-      )
-    );
+    const item = this.createUnknownItem(input.value);
+    this.itemsGroups[this.itemsGroups.length - 1]
+      .items.push(item);
     input.value = '';
+    this.onUpdate(item)
   }
+
+  private createUnknownItem = (text: string) =>
+    new Item(
+      new ItemDescriptor(text, 1),
+      this.itemsGroups[this.itemsGroups.length - 1].name
+    );
 }
