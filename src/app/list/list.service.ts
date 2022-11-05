@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {filter, from, groupBy, map, mergeMap, Observable, of, tap, toArray, zip} from 'rxjs';
 import {ItemsGroup} from '../items-groups/items-group.model';
 import {ItemDescriptor} from "./item-descriptor.model";
+import {ItemState} from "./item-state.enum";
 
 @Injectable({
   providedIn: 'root'
@@ -80,7 +81,7 @@ export class ListService {
 
   private convertToItem(row: string) {
     const columns = row.split(',');
-    return new Item(new ItemDescriptor(columns[0], 0), columns[1].trimEnd());
+    return new Item(new ItemDescriptor(columns[0], 0), columns[1], ItemState.NOT_CHECKED, +(columns[2].trimEnd()));
   }
 
   private sortByName(items: Item[]) {

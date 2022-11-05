@@ -49,7 +49,8 @@ export class HistoryService {
         new Item(
           new ItemDescriptor(object.descriptor.name, object.descriptor.quantity, object.descriptor.note),
           object.category,
-          object.state
+          object.state,
+          object.weight
         )
     );
 

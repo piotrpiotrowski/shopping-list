@@ -5,7 +5,8 @@ export class Item {
   constructor(
     public descriptor: ItemDescriptor,
     public category: string,
-    public state: ItemState = ItemState.NOT_CHECKED
+    public state: ItemState = ItemState.NOT_CHECKED,
+    public weight: number = 0
   ) {
   }
 

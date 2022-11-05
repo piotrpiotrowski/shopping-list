@@ -65,16 +65,13 @@ export class SelectedItemsComponent implements OnInit {
     this.mode = this.discoverMode();
   }
 
-  private discoverMode() {
-    return this.listService.getSelectedItems().length === 0 && this.text.length === 0 ? PresentationMode.EDIT : PresentationMode.VIEW;
-  }
+  private discoverMode = () => this.listService.getSelectedItems().length === 0 && this.text.length === 0 ? PresentationMode.EDIT : PresentationMode.VIEW;
 
-  private arrangeItems() {
-    return this.findNotChecked().concat(this.findChecked());
-  }
+  private arrangeItems = () => this.findNotChecked().concat(this.findChecked());
 
   private populateSelectedItems = () => {
-    this.items = this.listService.getSelectedItems();
+    this.items = this.listService.getSelectedItems()
+      .sort((item1, item2) => item1.weight - item2.weight || item1.descriptor.name.localeCompare(item2.descriptor.name));
     this.arrangedItems = this.arrangeItems();
     this.historyService.addEntry(this.items);
   };

@@ -4,7 +4,7 @@
       [ngClass]="panel.expanded ? '' : itemsGroup.name">
       <mat-panel-title
         class="{{ panel.expanded ? 'title-expanded' : 'title-collapsed' }}">
-        {{ itemsGroup.name.toUpperCase() }}
+        {{ itemsGroup.name | titlecase  }}
         <span *ngIf="itemsGroup.countSelected() > 0" class="counter"
           >({{ itemsGroup.countSelected() }})</span
         >
