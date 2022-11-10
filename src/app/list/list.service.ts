@@ -29,7 +29,7 @@ export class ListService {
       'text/csv; charset=utf-8'
     );
     return this.http
-      .get(`/api/${userId}.db.csv`, {headers, responseType: 'text'})
+      .get(`/api/${userId}.db.csv?t=${new Date().getTime()}`, {headers, responseType: 'text'})
       .pipe(mergeMap((text) => from(text.split('\n'))))
       .pipe(filter((row) => row.length > 0))
       .pipe(map((row) => this.convertToItem(row)))

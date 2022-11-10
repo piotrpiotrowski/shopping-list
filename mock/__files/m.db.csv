@@ -6,8 +6,8 @@ Kostka sedesowa,chemia,1
 Zürisacks,chemia,1
 Kompostier Beutel,chemia,1
 Płyn do sedesu,chemia,1
-Späzli,dania,13
-Lazania,dania,13
+Späzli,dania,14
+Lazania,dania,14
 Oliwka pielęgnacyjna,dziecięce,3
 Słoiczki dla Józia,dziecięce,3
 Waciki do pupy,dziecięce,3
@@ -19,6 +19,7 @@ Podkład na przewijak,dziecięce,3
 Wkładki na piersi,dziecięce,3
 Papier toaletowy,higieniczne,2
 Reczniki papierowe,higieniczne,2
+Chusteczki stołowe,higieniczne,2
 Papier nawilżony,higieniczne,2
 Pasta do zebów dla dorosłych,higieniczne,2
 Mydło w kostce,higieniczne,2
@@ -31,27 +32,28 @@ Plaster,higieniczne,2
 Ostrza do golarki,higieniczne,2
 Żel pod prysznic,higieniczne,2
 Przylepiec akrylowy,higieniczne,2
-Kabanosy,mięso,11
-Fleichkäse,mięso,11
-Mięso mielone,mięso,11
-Steak,mięso,11
-Wołowina z kościa,mięso,11
-Mięso na pieczeń,mięso,11
-Boczek,mięso,11
-Szynka,mięso,11
-Schab,mięso,11
-Poledwica,mięso,11
-Kiełbaski ślimaczki,mięso,11
-Biała kiełbasa,mięso,11
-Różowa kielbasa,mięso,11
-Pierś z kurczaka,mięso,11
-Kurczak,mięso,11
-Kurczak pieczony,mięso,11
-Ryba,mięso,11
-Lody,mrożone,9
-Burger,mrożone,9
-Mrożone maliny,mrożone,9
-Mrożone jeżyny,mrożone,9
+Szampon,higieniczne,2
+Kabanosy,mięso,12
+Fleichkäse,mięso,12
+Mięso mielone,mięso,12
+Steak,mięso,12
+Wołowina z kościa,mięso,12
+Mięso na pieczeń,mięso,12
+Boczek,mięso,12
+Szynka,mięso,12
+Schab,mięso,12
+Poledwica,mięso,12
+Kiełbaski ślimaczki,mięso,12
+Biała kiełbasa,mięso,12
+Różowa kielbasa,mięso,12
+Pierś z kurczaka,mięso,12
+Kurczak,mięso,12
+Kurczak pieczony,mięso,12
+Ryba,mięso,12
+Lody,mrożone,15
+Burger,mrożone,15
+Mrożone maliny,mrożone,15
+Mrożone jeżyny,mrożone,15
 Masło,nabiał,8
 Mleko,nabiał,8
 Mleko bez laktozy,nabiał,8
@@ -85,8 +87,8 @@ Kakao,napoje,4
 Salbeitee,napoje,4
 Mönch mit Salbei Tee,napoje,4
 Sok wieloowocowy,napoje,4
-Orzechy włoskie,orzechy,10
-Pistacje,orzechy,10
+Orzechy włoskie,orzechy,11
+Pistacje,orzechy,11
 Jabłka,owoce,10
 Mandarynki,owoce,10
 Winogrona,owoce,10
@@ -100,18 +102,19 @@ Gruszki,owoce,10
 Brzoskwinie,owoce,10
 Nektarynki,owoce,10
 Nektarynki białe,owoce,10
+Kiwi,owoce,10
 Cytryna,owoce,10
-Drożdże,pieczywo,12
-Chleb,pieczywo,12
-Chleb ciemny,pieczywo,12
-Chleb jasny,pieczywo,12
-Chleb fondue,pieczywo,12
-Chleb tesin,pieczywo,12
-Bułki,pieczywo,12
-Bułki jasne,pieczywo,12
-Bułki z makiem,pieczywo,12
-Gipfel,pieczywo,12
-Bułki ciemna,pieczywo,12
+Drożdże,pieczywo,13
+Chleb,pieczywo,13
+Chleb ciemny,pieczywo,13
+Chleb jasny,pieczywo,13
+Chleb fondue,pieczywo,13
+Chleb tesin,pieczywo,13
+Bułki,pieczywo,13
+Bułki jasne,pieczywo,13
+Bułki z makiem,pieczywo,13
+Gipfel,pieczywo,13
+Bułki ciemna,pieczywo,13
 Majonez,przyprawy,5
 Sól,przyprawy,5
 Pieprz,przyprawy,5
@@ -140,24 +143,24 @@ Makaron na lazanie,sypkie,6
 Kasza gryczana,sypkie,6
 Płatki owsiane,sypkie,6
 Skrobia ziemniaczana,sypkie,6
-Papryka,warzywa,10
-Marchewka,warzywa,10
-Por,warzywa,10
-Seler,warzywa,10
-Cebula,warzywa,10
-Buraki,warzywa,10
-Brokuły,warzywa,10
-Cukinia,warzywa,10
-Sałata,warzywa,10
-Pomidor,warzywa,10
-Ogórek,warzywa,10
-Rzodkiewka,warzywa,10
-Ziemniaki,warzywa,10
-Fasola szparagowa,warzywa,10
-Fasola sucha,warzywa,10
-Ciecierzyca,warzywa,10
-Czosnek,warzywa,10
-Imbir,warzywa,10
-Pomidory koktajlowe,warzywa,10
-Kukurydza,warzywa,10
-Groszek,warzywa,10
+Papryka,warzywa,9
+Marchewka,warzywa,9
+Por,warzywa,9
+Seler,warzywa,9
+Cebula,warzywa,9
+Buraki,warzywa,9
+Brokuły,warzywa,9
+Cukinia,warzywa,9
+Sałata,warzywa,9
+Pomidor,warzywa,9
+Ogórek,warzywa,9
+Rzodkiewka,warzywa,9
+Ziemniaki,warzywa,9
+Fasola szparagowa,warzywa,9
+Fasola sucha,warzywa,9
+Ciecierzyca,warzywa,9
+Czosnek,warzywa,9
+Imbir,warzywa,9
+Pomidory koktajlowe,warzywa,9
+Kukurydza,warzywa,9
+Groszek,warzywa,9
