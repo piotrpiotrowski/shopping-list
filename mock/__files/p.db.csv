@@ -20,6 +20,7 @@ Wkładki na piersi,dziecięce,3
 Papier toaletowy,higieniczne,2
 Reczniki papierowe,higieniczne,2
 Chusteczki stołowe,higieniczne,2
+Chusteczki higieniczne,higieniczne,2
 Papier nawilżony,higieniczne,2
 Pasta do zebów dla dorosłych,higieniczne,2
 Mydło w kostce,higieniczne,2
@@ -50,7 +51,10 @@ Pierś z kurczaka,mięso,12
 Kurczak,mięso,12
 Kurczak pieczony,mięso,12
 Ryba,mięso,12
-Lody,mrożone,15
+Lody czekoladowe,mrożone,15
+Lody waniliowe,mrożone,15
+Lody owocowe,mrożone,15
+Lody mietowe,mrożone,15
 Burger,mrożone,15
 Mrożone maliny,mrożone,15
 Mrożone jeżyny,mrożone,15
@@ -122,9 +126,11 @@ Oregano,przyprawy,5
 Przyprawa do kurczak,przyprawy,5
 Bazylia,przyprawy,5
 Keczup,przyprawy,5
-Czekolada,słodycze,7
+Czekolada mleczna,słodycze,7
 Czekolada gorzka,słodycze,7
 Dżem,słodycze,7
+Żelki odważniaki,słodycze,7
+Wafelki,słodycze,7
 Czekolada do smarowania,słodycze,7
 Oliwa,sypkie,6
 Olej,sypkie,6
@@ -142,6 +148,7 @@ Makaron świderki,sypkie,6
 Makaron na lazanie,sypkie,6
 Kasza gryczana,sypkie,6
 Płatki owsiane,sypkie,6
+Ryż,sypkie,6
 Skrobia ziemniaczana,sypkie,6
 Papryka,warzywa,9
 Marchewka,warzywa,9
@@ -164,3 +171,4 @@ Imbir,warzywa,9
 Pomidory koktajlowe,warzywa,9
 Kukurydza,warzywa,9
 Groszek,warzywa,9
+Pietruszka,warzywa,9

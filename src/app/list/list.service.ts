@@ -57,6 +57,10 @@ export class ListService {
       .map((item) => item.asString())
       .join('\n');
 
+  public getAllItemNames = () => this.itemsGroups
+    .flatMap((itemsGroup) => itemsGroup.items)
+    .map(item => item.descriptor.name);
+
   private selectBy(itemDescriptor: ItemDescriptor) {
     const item = this.findItem(itemDescriptor.name);
     if (item) {

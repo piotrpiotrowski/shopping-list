@@ -1,3 +1,8 @@
+<button mat-raised-button (click)="recordItemName()" class="record-button" [disabled]="disableRecordButton">
+  <mat-icon *ngIf="!disableRecordButton">play_arrow</mat-icon>
+  <mat-icon *ngIf="disableRecordButton">fiber_manual_record</mat-icon>
+  Record
+</button>
 <app-items-groups
   [itemsGroupsSource]="this.loaderService.load()"
   (updated)="copyToClipboard()"></app-items-groups>

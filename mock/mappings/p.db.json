@@ -1,7 +1,7 @@
 {
   "request": {
     "method": "GET",
-    "url": "/api/p.db.csv"
+    "urlPath": "/api/p.db.csv"
   },
   "response": {
     "status": 200,
