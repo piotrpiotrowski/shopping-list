@@ -22,6 +22,7 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatMenuModule } from '@angular/material/menu';
 import { HistoryListComponent } from './history-list/history-list.component';
+import { RecordButtonComponent } from './record-button/record-button.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { HistoryListComponent } from './history-list/history-list.component';
     MenuComponent,
     HomeComponent,
     SelectedItemsComponent,
-    HistoryListComponent
+    HistoryListComponent,
+    RecordButtonComponent
   ],
   imports: [
     BrowserModule,

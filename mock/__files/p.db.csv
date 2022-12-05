@@ -3,8 +3,8 @@ Płyn do mycia naczyń,chemia,1
 Kostki do zmywarki,chemia,1
 Ściereczki do naczyń,chemia,1
 Kostka sedesowa,chemia,1
-Zürisacks,chemia,1
-Kompostier Beutel,chemia,1
+Worki na śmieci,chemia,1
+Worki na kompost,chemia,1
 Płyn do sedesu,chemia,1
 Späzli,dania,14
 Lazania,dania,14
@@ -12,17 +12,17 @@ Oliwka pielęgnacyjna,dziecięce,3
 Słoiczki dla Józia,dziecięce,3
 Waciki do pupy,dziecięce,3
 Pieluszki,dziecięce,3
-Pasta do zebów dla dzieci,dziecięce,3
+Pasta do zębów dla dzieci,dziecięce,3
 Mus owocowy,dziecięce,3
-Kaszka niemowleca,dziecięce,3
+Kaszka niemowlęca,dziecięce,3
 Podkład na przewijak,dziecięce,3
 Wkładki na piersi,dziecięce,3
 Papier toaletowy,higieniczne,2
-Reczniki papierowe,higieniczne,2
+Ręczniki papierowe,higieniczne,2
 Chusteczki stołowe,higieniczne,2
 Chusteczki higieniczne,higieniczne,2
 Papier nawilżony,higieniczne,2
-Pasta do zebów dla dorosłych,higieniczne,2
+Pasta do zębów dla dorosłych,higieniczne,2
 Mydło w kostce,higieniczne,2
 Mydło w płynie,higieniczne,2
 Patyczki do uszu,higieniczne,2
@@ -43,7 +43,7 @@ Mięso na pieczeń,mięso,12
 Boczek,mięso,12
 Szynka,mięso,12
 Schab,mięso,12
-Poledwica,mięso,12
+Polędwica,mięso,12
 Kiełbaski ślimaczki,mięso,12
 Biała kiełbasa,mięso,12
 Różowa kielbasa,mięso,12
@@ -54,7 +54,7 @@ Ryba,mięso,12
 Lody czekoladowe,mrożone,15
 Lody waniliowe,mrożone,15
 Lody owocowe,mrożone,15
-Lody mietowe,mrożone,15
+Lody miętowe,mrożone,15
 Burger,mrożone,15
 Mrożone maliny,mrożone,15
 Mrożone jeżyny,mrożone,15
@@ -118,7 +118,7 @@ Bułki,pieczywo,13
 Bułki jasne,pieczywo,13
 Bułki z makiem,pieczywo,13
 Gipfel,pieczywo,13
-Bułki ciemna,pieczywo,13
+Bułki ciemne,pieczywo,13
 Majonez,przyprawy,5
 Sól,przyprawy,5
 Pieprz,przyprawy,5
@@ -126,6 +126,7 @@ Oregano,przyprawy,5
 Przyprawa do kurczak,przyprawy,5
 Bazylia,przyprawy,5
 Keczup,przyprawy,5
+Czekoladki,przyprawy,5
 Czekolada mleczna,słodycze,7
 Czekolada gorzka,słodycze,7
 Dżem,słodycze,7
@@ -138,14 +139,14 @@ Koncentrat pomidorowy,sypkie,6
 Cukier,sypkie,6
 Pomidory w puszcze,sypkie,6
 Mąka,sypkie,6
-Roll gerste,sypkie,6
+Kasza jęczmienna,sypkie,6
 Makaron spagetti,sypkie,6
 Wafle kukurydziane,sypkie,6
 Wafle ryżowe,sypkie,6
 Chrupki kukurydziane,sypkie,6
 Makaron do rosołu,sypkie,6
 Makaron świderki,sypkie,6
-Makaron na lazanie,sypkie,6
+Makaron na lazanii,sypkie,6
 Kasza gryczana,sypkie,6
 Płatki owsiane,sypkie,6
 Ryż,sypkie,6

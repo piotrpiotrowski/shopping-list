@@ -9,9 +9,7 @@ export class SpeechRecognitionFactory {
   constructor() {
   }
 
-  create(knownWords: string[]) {
-    return new SpeechRecognitionService(this.createRecognition(knownWords));
-  }
+  create = (knownWords: string[]) => new SpeechRecognitionService(this.createRecognition(knownWords));
 
   private createRecognition(knownWords: string[]) {
     const speechRecognitionList = new window.webkitSpeechGrammarList();

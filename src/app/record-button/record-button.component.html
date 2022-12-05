@@ -1,0 +1,4 @@
+<button mat-mini-fab color="{{recordingInProgress ? 'accent': 'primary'}}" (click)="recordItemName()" class="action-button">
+  <mat-icon *ngIf="!recordingInProgress">mic</mat-icon>
+  <mat-icon *ngIf="recordingInProgress">fiber_manual_record</mat-icon>
+</button>

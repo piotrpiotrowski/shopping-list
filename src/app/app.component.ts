@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {LoaderService} from "./loader.service";
+import {RecordedItemDescriptorService} from "./speech/recorded-item-descriptor.service";
 
 @Component({
   selector: 'app-root',
@@ -8,6 +10,6 @@ import {Component} from '@angular/core';
 export class AppComponent {
   title = 'Shopping list';
 
-  constructor() {
+  constructor(public loaderService: LoaderService, public recordedItemDescriptorService: RecordedItemDescriptorService) {
   }
 }

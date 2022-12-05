@@ -16,6 +16,9 @@
         <mat-icon>menu</mat-icon>
       </button>
       <span class="title">{{ title }}</span>
+      <app-record-button class="record-button"
+        [itemsGroupsSource]="loaderService.load()"
+        (recorded)="recordedItemDescriptorService.publish($event)"></app-record-button>
     </mat-toolbar>
     <div class="router-outlet-content">
       <router-outlet></router-outlet>

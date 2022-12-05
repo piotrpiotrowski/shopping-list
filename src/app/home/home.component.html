@@ -1,7 +1,3 @@
-<button mat-mini-fab color="{{recordingInProgress ? 'accent': 'primary'}}" (click)="recordItemName()" class="record-button">
-  <mat-icon *ngIf="!recordingInProgress">mic</mat-icon>
-  <mat-icon *ngIf="recordingInProgress">fiber_manual_record</mat-icon>
-</button>
 <app-items-groups
   [itemsGroupsSource]="this.loaderService.load()"
   (updated)="copyToClipboard()"></app-items-groups>
