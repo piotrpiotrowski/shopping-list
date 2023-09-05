@@ -85,3 +85,9 @@ $theme: mat.define-light-theme((
   background: rgb(20, 116, 222, 0.7);
   background: linear-gradient(90deg, rgba(255, 0, 0, 0.7) 20%, rgba(20, 116, 222, 0.7) 100%) !important;
 }
+
+.polska {
+  background: rgb(255,255,255);
+  background: linear-gradient(180deg, rgba(255,255,255,1) 5%, rgba(255,0,0,1) 100%) !important;
+  border: 1px solid rgba(255,0,0,1) !important;
+}

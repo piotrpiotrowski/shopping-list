@@ -23,6 +23,8 @@ Chusteczki stołowe,higieniczne,2
 Chusteczki higieniczne,higieniczne,2
 Papier nawilżony,higieniczne,2
 Pasta do zębów dla dorosłych,higieniczne,2
+Kram do opalania,higieniczne,2
+Pianka do golenia,higieniczne,2
 Mydło w kostce,higieniczne,2
 Mydło w płynie,higieniczne,2
 Patyczki do uszu,higieniczne,2
@@ -33,7 +35,10 @@ Plaster,higieniczne,2
 Ostrza do golarki,higieniczne,2
 Żel pod prysznic,higieniczne,2
 Przylepiec akrylowy,higieniczne,2
+Krem do rąk,higieniczne,2
+Dezodorant,higieniczne,2
 Szampon,higieniczne,2
+Serwetki,higieniczne,2
 Kabanosy,mięso,12
 Fleichkäse,mięso,12
 Mięso mielone,mięso,12
@@ -60,6 +65,9 @@ Mrożone maliny,mrożone,15
 Mrożone jeżyny,mrożone,15
 Masło,nabiał,8
 Mleko,nabiał,8
+Mleko owsiane,nabiał,8
+Mleko sojowe,nabiał,8
+Mleko migdałowe,nabiał,8
 Mleko bez laktozy,nabiał,8
 Mleczko bebe,nabiał,8
 Jajka,nabiał,8
@@ -71,6 +79,8 @@ Aktimelki,nabiał,8
 Serek malinowy,nabiał,8
 Serek truskawkowy,nabiał,8
 Serek czekoladowy,nabiał,8
+Serek naturli waniliowy,nabiał,8
+Serek naturli kawowy,nabiał,8
 Raumkäse Luzerner,nabiał,8
 Serek maskarpone,nabiał,8
 Ser do fondue,nabiał,8
@@ -126,7 +136,7 @@ Oregano,przyprawy,5
 Przyprawa do kurczak,przyprawy,5
 Bazylia,przyprawy,5
 Keczup,przyprawy,5
-Czekoladki,przyprawy,5
+Czekoladki,słodycze,7
 Czekolada mleczna,słodycze,7
 Czekolada gorzka,słodycze,7
 Dżem,słodycze,7
@@ -173,3 +183,11 @@ Pomidory koktajlowe,warzywa,9
 Kukurydza,warzywa,9
 Groszek,warzywa,9
 Pietruszka,warzywa,9
+Kabanosy cieńkie,polska,16
+Majonez kielecki,polska,16
+Kiełbasa wiejska,polska,16
+Ogórek kiszony,polska,16
+Cwaróg,polska,16
+Gulasz angielski,polska,16
+Barsz biały,polska,16
+Kapusta kiszona,polska,16
