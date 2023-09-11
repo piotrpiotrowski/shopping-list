@@ -22,7 +22,10 @@ export class SpeechRecognitionService {
       wordEmitter.emit(this.toCapitalString(event.results[0][0].transcript));
       wordEmitter.complete();
     }
-    recognition.onspeechend = () => recognition.stop();
+    recognition.onspeechend = () => {
+      recognition.stop();
+      wordEmitter.complete();
+    };
     recognition.onnomatch = (event: SpeechRecognitionEvent) => wordEmitter.error(new Error('Match not found for ' + event.results[0][0].transcript));
     recognition.onerror = (event: SpeechRecognitionErrorEvent) => wordEmitter.error(event);
     return wordEmitter;
