@@ -33,27 +33,29 @@ export class RecordButtonComponent implements OnInit, OnDestroy {
   }
 
   recordItemName() {
-    if (!this.recordingInProgress) {
-      this.recordingInProgress = true;
-      this.subscription = this.speechRecognitionService.recognizeWords()
-        .pipe(distinct())
-        .pipe(map((word: string) => new ItemDescriptor(word, 1, '')))
-        .subscribe({
-          next: itemDescriptor => this.recorded.emit(itemDescriptor),
-          error: (error) => this.handleError(error),
-          complete: () => this.finishRecording()
-        });
-    } else {
+    if (this.recordingInProgress) {
       this.speechRecognitionService.stop();
       this.finishRecording();
+      return;
     }
+    this.recordingInProgress = true;
+    this.subscription = this.speechRecognitionService.recognizeWords()
+      .pipe(distinct())
+      .pipe(map((word: string) => new ItemDescriptor(word, 1, '')))
+      .subscribe({
+        next: itemDescriptor => this.recorded.emit(itemDescriptor),
+        error: (error) => this.handleError(error),
+        complete: () => this.finishRecording()
+      });
   }
 
   private getAllItemNames = (itemsGroups: ItemsGroup[]) => itemsGroups
     .flatMap((itemsGroup) => itemsGroup.items)
     .map(item => item.descriptor.name);
+
   private handleError(error: Error) {
     console.error(error);
+    this.finishRecording();
   }
 
   private finishRecording() {

@@ -1,4 +1,5 @@
 import {EventEmitter} from '@angular/core';
+import {delay, finalize, of, tap} from "rxjs";
 
 export class SpeechRecognitionService {
 
@@ -24,7 +25,10 @@ export class SpeechRecognitionService {
     }
     recognition.onspeechend = () => {
       recognition.stop();
-      wordEmitter.complete();
+      of(recognition)
+        .pipe(delay(2000))
+        .pipe(finalize(() => wordEmitter.complete()))
+        .subscribe();
     };
     recognition.onnomatch = (event: SpeechRecognitionEvent) => wordEmitter.error(new Error('Match not found for ' + event.results[0][0].transcript));
     recognition.onerror = (event: SpeechRecognitionErrorEvent) => wordEmitter.error(event);
