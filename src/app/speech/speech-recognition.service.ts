@@ -26,7 +26,7 @@ export class SpeechRecognitionService {
     recognition.onspeechend = () => {
       recognition.stop();
       of(recognition)
-        .pipe(delay(2000))
+        .pipe(delay(200))
         .pipe(finalize(() => wordEmitter.complete()))
         .subscribe();
     };
