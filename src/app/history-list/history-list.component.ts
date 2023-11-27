@@ -42,7 +42,7 @@ export class HistoryListComponent implements OnInit {
   exportUncategorized() {
     const unknownItems = this.historyService.getAllEntries()
         .map(entry => this.findItemsWithCategoryUnknown(entry.value))
-        .reduce((accumulator, items) => accumulator.concat(items));
+        .reduce((accumulator, items) => accumulator.concat(items), []);
     console.log(unknownItems.join('\n'));
     this.clipboard.copy(unknownItems.join('\n'));
   }
