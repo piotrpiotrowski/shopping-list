@@ -30,7 +30,7 @@ export class SpeechRecognitionService {
         .pipe(finalize(() => wordEmitter.complete()))
         .subscribe();
     };
-    recognition.onnomatch = (event: SpeechRecognitionEvent) => wordEmitter.error(new Error('Match not found for ' + event.results[0][0].transcript));
+    recognition.onnomatch = (event: SpeechRecognitionEvent) => wordEmitter.error(new Error('Match not found for ' + (event.results && event.results[0][0].transcript)));
     recognition.onerror = (event: SpeechRecognitionErrorEvent) => wordEmitter.error(event);
     return wordEmitter;
   }

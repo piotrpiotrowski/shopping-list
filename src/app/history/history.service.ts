@@ -25,7 +25,7 @@ export class HistoryService {
   }
 
   getAllEntries = () =>
-    [...Array(180).keys()]
+    [...Array(360).keys()]
       .map((offset) => this.subtractDayFromToday(offset))
       .map((date) => this.buildKey(date))
       .filter((key) => localStorage.getItem(key))

@@ -39,15 +39,28 @@ export class HistoryListComponent implements OnInit {
     this.clipboard.copy(entry.getItemsAsText());
   }
 
+  exportUncategorized() {
+    const unknownItems = this.historyService.getAllEntries()
+        .map(entry => this.findItemsWithCategoryUnknown(entry.value))
+        .reduce((accumulator, items) => accumulator.concat(items));
+    console.log(unknownItems.join('\n'));
+    this.clipboard.copy(unknownItems.join('\n'));
+  }
+
+  private findItemsWithCategoryUnknown(items: Item[]) {
+    return items.filter(item => item.category === 'nieznane')
+      .map(item => item.descriptor.name)
+  }
+
   addNotChecked(entry: HistoryEntry) {
     this.listService.select(this.toItemsDescriptors(this.filterNotCheckedItems(entry)));
   }
 
-  private filterNotCheckedItems = (entry: HistoryEntry) => entry.value.filter(item => item.state === ItemState.NOT_CHECKED);
-
   addAll(entry: HistoryEntry) {
     this.listService.select(this.toItemsDescriptors(entry.value));
   }
+
+  private filterNotCheckedItems = (entry: HistoryEntry) => entry.value.filter(item => item.state === ItemState.NOT_CHECKED);
 
   private toItemsDescriptors = (items: Item[]) => items.map(value => value.descriptor);
 }
