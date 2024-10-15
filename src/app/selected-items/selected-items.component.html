@@ -11,7 +11,7 @@
     [(ngModel)]="text">
   </textarea>
 </mat-form-field>
-<mat-selection-list [multiple]="false" *ngIf="isModeView()">
+<mat-selection-list [multiple]="true" *ngIf="isModeView()">
   <mat-list-option
     *ngFor="let item of arrangedItems"
     (click)="changeLineState(item)"

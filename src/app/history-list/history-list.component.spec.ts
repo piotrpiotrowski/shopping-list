@@ -9,7 +9,6 @@ import {Item} from "../list/item.model";
 import {By} from "@angular/platform-browser";
 import {MatMenuModule} from "@angular/material/menu";
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
-import {MatMenuHarness} from "@angular/material/menu/testing";
 import {HarnessLoader} from "@angular/cdk/testing";
 import {TestbedHarnessEnvironment} from "@angular/cdk/testing/testbed";
 import {ItemDescriptor} from "../list/item-descriptor.model";
@@ -17,6 +16,7 @@ import {LoaderService} from "../loader.service";
 import {of} from "rxjs";
 import {ItemsGroup} from "../items-groups/items-group.model";
 import {ListService} from "../list/list.service";
+import {MatMenuHarness} from "@angular/material/menu/testing";
 
 describe('HistoryListComponent', () => {
 
